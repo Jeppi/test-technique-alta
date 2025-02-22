@@ -1,4 +1,4 @@
-package fr.altaprofits.exercice;
+package fr.altaprofits.exercice.commun;
 
 public class Point {
 	private final int x;

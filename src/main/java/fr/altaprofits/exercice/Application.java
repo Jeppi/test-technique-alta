@@ -1,9 +1,9 @@
 package fr.altaprofits.exercice;
 
-import fr.altaprofits.exercice.vehicule.Avion;
-import fr.altaprofits.exercice.vehicule.Helicoptere;
-import fr.altaprofits.exercice.vehicule.JetSki;
-import fr.altaprofits.exercice.vehicule.Moto;
+import fr.altaprofits.exercice.model.vehicule.Avion;
+import fr.altaprofits.exercice.model.vehicule.Helicoptere;
+import fr.altaprofits.exercice.model.vehicule.JetSki;
+import fr.altaprofits.exercice.model.vehicule.Moto;
 
 public class Application {
     public static void main(String[] args) {

@@ -1,6 +1,6 @@
 package fr.altaprofits.exercice;
 
-import fr.altaprofits.exercice.vehicule.*;
+import fr.altaprofits.exercice.model.vehicule.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;

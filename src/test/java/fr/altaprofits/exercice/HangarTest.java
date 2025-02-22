@@ -1,6 +1,6 @@
 package fr.altaprofits.exercice;
 
-import fr.altaprofits.exercice.vehicule.*;
+import fr.altaprofits.exercice.model.vehicule.*;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
