@@ -1,21 +1,12 @@
 package fr.altaprofits.exercice.model.vehicule;
 
-import fr.altaprofits.exercice.commun.Point;
+import fr.altaprofits.exercice.model.vehicule.strategie.Roulant;
 
 public class Moto extends Vehicule {
     private static Integer idIndex = 0;
 
     public Moto() {
-        super("M-" + ++idIndex);
+        super("M-" + ++idIndex, new Roulant());
     }
 
-    public void seDeplace(int x, int y) {
-        roule(new Point(x, y));
-    }
-
-    private void roule(Point destination) {
-        System.out.printf("V�hicule de type moto (Ref : %s), se d�place de la position %s vers %s\n",
-                reference, position, destination);
-        position = destination;
-    }
 }

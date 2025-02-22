@@ -14,12 +14,13 @@ class HangarTest {
 
     Hangar hangar = new Hangar();
 
-    Moto moto1 = new Moto();
-    Voiture voiture1 = new Voiture();
-    Avion avion1 = new Avion();
-    Avion avion2 = new Avion();
+    Moto        moto1 = new Moto();
+    Voiture     voiture1 = new Voiture();
+    Avion       avion1 = new Avion();
+    Avion       avion2 = new Avion();
     Helicoptere helico1 = new Helicoptere();
-    JetSki jetSki1 = new JetSki();
+    JetSki      jetSki1 = new JetSki();
+    Bateau      bateau1 = new Bateau();
 
     @Test
     void entreDansHangar() {
@@ -30,19 +31,20 @@ class HangarTest {
         hangar.entre(avion2);
         hangar.entre(helico1);
         hangar.entre(jetSki1);
+        hangar.entre(bateau1);
 
-        assertThat(hangar.nombreDeVehiculesDansHangar()).isEqualTo(6);
+        assertThat(hangar.nombreDeVehiculesDansHangar()).isEqualTo(7);
 
         // On refait entrer des véhicules déjà présents
         hangar.entre(moto1);
         hangar.entre(voiture1);
 
-        assertThat(hangar.nombreDeVehiculesDansHangar()).isEqualTo(6);
+        assertThat(hangar.nombreDeVehiculesDansHangar()).isEqualTo(7);
 
         // On ajoute un nouveau véhicule non présent
         hangar.entre(new Moto());
 
-        assertThat(hangar.nombreDeVehiculesDansHangar()).isEqualTo(7);
+        assertThat(hangar.nombreDeVehiculesDansHangar()).isEqualTo(8);
 
     }
 
@@ -56,6 +58,7 @@ class HangarTest {
         hangar.entre(avion2);
         hangar.entre(helico1);
         hangar.entre(jetSki1);
+        hangar.entre(bateau1);
 
         assertThat(hangar.nombreDeVehiculesDansAeroport()).isEqualTo(3);
 
@@ -71,6 +74,7 @@ class HangarTest {
         hangar.entre(avion2);
         hangar.entre(helico1);
         hangar.entre(jetSki1);
+        hangar.entre(bateau1);
 
         assertThat(hangar.nombreDeVehiculesDansGarage()).isEqualTo(2);
 
@@ -86,8 +90,9 @@ class HangarTest {
         hangar.entre(avion2);
         hangar.entre(helico1);
         hangar.entre(jetSki1);
+        hangar.entre(bateau1);
 
-        assertThat(hangar.nombreDeVehiculesDansPort()).isEqualTo(1);
+        assertThat(hangar.nombreDeVehiculesDansPort()).isEqualTo(2);
     }
 
     @Test
@@ -100,25 +105,23 @@ class HangarTest {
         hangar.entre(avion2);
         hangar.entre(helico1);
         hangar.entre(jetSki1);
+        hangar.entre(bateau1);
 
-        assertThat(hangar.nombreDeVehiculesDansHangar()).isEqualTo(6);
+        assertThat(hangar.nombreDeVehiculesDansHangar()).isEqualTo(7);
     }
 
     @Test
     void idUniquePourChaqueVehicule() {
 
         Set<Vehicule> vehicules = Set.of(moto1, new Moto(), voiture1, new Voiture(), avion1, avion2,
-                helico1, new Helicoptere(), jetSki1, new JetSki());
-
-        // On a bien créé dix véhicules différents
-        assertThat(vehicules.size()).isEqualTo(10);
+                helico1, new Helicoptere(), jetSki1, new JetSki(), bateau1, new Bateau());
 
         Set<String> references = vehicules.stream()
                 .map(Vehicule::getReference)
                 .collect(Collectors.toSet());
 
-        // On a bien dix identifiants (références) distincts
-        assertThat(references.size()).isEqualTo(10);
+        // On a bien le même nombre d'id distinct que de véhicules
+        assertThat(references.size()).isEqualTo(vehicules.size());
 
         // NB : le code ne garanti pas l'unicité si l'on crée deux entités du même type au même moment (à voir si c'est dans le scope)
     }
@@ -133,6 +136,7 @@ class HangarTest {
         avion2.seDeplace(25, 55);
         helico1.seDeplace(23, 11);
         jetSki1.seDeplace(3, 9);
+        bateau1.seDeplace(31, 33);
 
         assertThat(moto1.getPosition()).isEqualTo(new Point(5, 12));
         assertThat(voiture1.getPosition()).isEqualTo(new Point(17, 13));
@@ -140,6 +144,7 @@ class HangarTest {
         assertThat(avion2.getPosition()).isEqualTo(new Point(25, 55));
         assertThat(helico1.getPosition()).isEqualTo(new Point(23, 11));
         assertThat(jetSki1.getPosition()).isEqualTo(new Point(3, 9));
+        assertThat(bateau1.getPosition()).isEqualTo(new Point(31, 33));
 
     }
 
