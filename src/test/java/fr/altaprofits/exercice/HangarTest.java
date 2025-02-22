@@ -1,7 +1,11 @@
 package fr.altaprofits.exercice;
 
+import fr.altaprofits.exercice.commun.Point;
 import fr.altaprofits.exercice.model.vehicule.*;
 import org.junit.jupiter.api.Test;
+
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -102,26 +106,43 @@ class HangarTest {
     @Test
     void idUniquePourChaqueVehicule() {
 
-        assertThat(moto1.getReference()).isNotEqualTo(new Moto());
-        assertThat(moto1.getReference()).isNotEqualTo(new Moto());
+        Set<Vehicule> vehicules = Set.of(moto1, new Moto(), voiture1, new Voiture(), avion1, avion2,
+                helico1, new Helicoptere(), jetSki1, new JetSki());
 
-        assertThat(voiture1.getReference()).isNotEqualTo(new Voiture());
-        assertThat(voiture1.getReference()).isNotEqualTo(moto1);
+        // On a bien créé dix véhicules différents
+        assertThat(vehicules.size()).isEqualTo(10);
 
-        assertThat(avion1.getReference()).isNotEqualTo(avion2);
-        assertThat(avion1.getReference()).isNotEqualTo(new Avion());
+        Set<String> references = vehicules.stream()
+                .map(Vehicule::getReference)
+                .collect(Collectors.toSet());
 
-        assertThat(helico1.getReference()).isNotEqualTo(new Helicoptere());
+        // On a bien dix identifiants (références) distincts
+        assertThat(references.size()).isEqualTo(10);
 
-        assertThat(jetSki1.getReference()).isNotEqualTo(new JetSki());
-        // TODO: On peut ajouter chaque id (référence) à un set, ce qui permettrait de vérifier qu'on n'a pas de doublons.
-        // NB : le code ne garanti pas l'unicité si l'on créé deux entités du même type au même moment (à voir si c'est dans le scope)
+        // NB : le code ne garanti pas l'unicité si l'on crée deux entités du même type au même moment (à voir si c'est dans le scope)
     }
 
     @Test
     void vehiculesSeDeplacent() {
-        // TODO: manuelement on peut constater que tous les véhicules peuvent se déplacer, je vais mutualisé le code
-        // avant de créer le test pour éviter d'ajouter la même méthode sur chaque entité.
+
+        moto1.seDeplace(5, 12);
+        voiture1.seDeplace(17, 13);
+        avion1.seDeplace(10, 30);
+        avion1.seDeplace(30, 60);
+        avion2.seDeplace(25, 55);
+        helico1.seDeplace(23, 11);
+        jetSki1.seDeplace(3, 9);
+
+        assertThat(moto1.getPosition().toString()).isEqualTo(new Point(5, 12).toString());
+        assertThat(voiture1.getPosition().toString()).isEqualTo(new Point(17, 13).toString());
+        assertThat(avion1.getPosition().toString()).isEqualTo(new Point(30, 60).toString());
+        assertThat(avion2.getPosition().toString()).isEqualTo(new Point(25, 55).toString());
+        assertThat(helico1.getPosition().toString()).isEqualTo(new Point(23, 11).toString());
+        assertThat(jetSki1.getPosition().toString()).isEqualTo(new Point(3, 9).toString());
+
+        // TODO: Point est un value object et sa méthode equals() devraient être surchargée pour
+        // comparer des valeurs et non des objets. A transformer en record, qui apportera les overwrite
+        // equals et hash nécessaires. On n'aura plus besoin du toString() dans le test.
     }
 
     @Test
