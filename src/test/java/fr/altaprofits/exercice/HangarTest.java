@@ -1,6 +1,7 @@
 package fr.altaprofits.exercice;
 
 import fr.altaprofits.exercice.commun.Point;
+import fr.altaprofits.exercice.model.Hangar;
 import fr.altaprofits.exercice.model.vehicule.*;
 import org.junit.jupiter.api.Test;
 

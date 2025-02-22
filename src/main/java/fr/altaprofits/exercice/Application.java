@@ -1,5 +1,6 @@
 package fr.altaprofits.exercice;
 
+import fr.altaprofits.exercice.model.Hangar;
 import fr.altaprofits.exercice.model.vehicule.Avion;
 import fr.altaprofits.exercice.model.vehicule.Helicoptere;
 import fr.altaprofits.exercice.model.vehicule.JetSki;
