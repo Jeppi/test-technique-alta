@@ -17,7 +17,11 @@ public class JetSki {
     }
 
     private void navigue(Point destination) {
-        System.out.printf("Véhicule de type jet-ski (Ref : %s), se déplace de la position %s vers %s\n", refJetSki, position, destination);
+        System.out.printf("Vï¿½hicule de type jet-ski (Ref : %s), se dï¿½place de la position %s vers %s\n", refJetSki, position, destination);
         position = destination;
+    }
+
+    public String getReference() {
+        return refJetSki;
     }
 }

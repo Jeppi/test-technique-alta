@@ -17,7 +17,11 @@ public class Avion {
     }
 
     private void vole(Point destination) {
-        System.out.printf("Véhicule de type avion (Ref : %s), se déplace de la position %s vers %s\n", refAvion, position, destination);
+        System.out.printf("Vï¿½hicule de type avion (Ref : %s), se dï¿½place de la position %s vers %s\n", refAvion, position, destination);
         position = destination;
+    }
+
+    public String getReference() {
+        return refAvion;
     }
 }

@@ -17,7 +17,11 @@ public class Moto {
     }
 
     private void roule(Point destination) {
-        System.out.printf("Véhicule de type moto (Ref : %s), se déplace de la position %s vers %s\n", refMoto, position, destination);
+        System.out.printf("Vï¿½hicule de type moto (Ref : %s), se dï¿½place de la position %s vers %s\n", refMoto, position, destination);
         position = destination;
+    }
+
+    public String getReference() {
+        return refMoto;
     }
 }

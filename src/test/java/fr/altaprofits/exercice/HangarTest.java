@@ -17,7 +17,7 @@ class HangarTest {
     JetSki jetSki1 = new JetSki();
 
     @Test
-    void testVehiculesEntreDansHangar() {
+    void entreDansHangar() {
         // On fait entrer au moins un élément de chaque Véhicule
         hangar.entre(moto1);
         hangar.entre(voiture1);
@@ -72,7 +72,7 @@ class HangarTest {
     }
 
     @Test
-    void nombreDeVehiculeDansPort() {
+    void nombreDeVehiculesDansPort() {
 
         // On fait entrer au moins un élément de chaque Véhicule
         hangar.entre(moto1);
@@ -82,7 +82,7 @@ class HangarTest {
         hangar.entre(helico1);
         hangar.entre(jetSki1);
 
-        assertThat(hangar.nombreDeVehiculesDansPort()).isEqualTo(2);
+        assertThat(hangar.nombreDeVehiculesDansPort()).isEqualTo(1);
     }
 
     @Test
@@ -97,6 +97,43 @@ class HangarTest {
         hangar.entre(jetSki1);
 
         assertThat(hangar.nombreDeVehiculesDansHangar()).isEqualTo(6);
+    }
+
+    @Test
+    void idUniquePourChaqueVehicule() {
+
+        assertThat(moto1.getReference()).isNotEqualTo(new Moto());
+        assertThat(moto1.getReference()).isNotEqualTo(new Moto());
+
+        assertThat(voiture1.getReference()).isNotEqualTo(new Voiture());
+        assertThat(voiture1.getReference()).isNotEqualTo(moto1);
+
+        assertThat(avion1.getReference()).isNotEqualTo(avion2);
+        assertThat(avion1.getReference()).isNotEqualTo(new Avion());
+
+        assertThat(helico1.getReference()).isNotEqualTo(new Helicoptere());
+
+        assertThat(jetSki1.getReference()).isNotEqualTo(new JetSki());
+        // TODO: On peut ajouter chaque id (référence) à un set, ce qui permettrait de vérifier qu'on n'a pas de doublons.
+        // NB : le code ne garanti pas l'unicité si l'on créé deux entités du même type au même moment (à voir si c'est dans le scope)
+    }
+
+    @Test
+    void vehiculesSeDeplacent() {
+        // TODO: manuelement on peut constater que tous les véhicules peuvent se déplacer, je vais mutualisé le code
+        // avant de créer le test pour éviter d'ajouter la même méthode sur chaque entité.
+    }
+
+    @Test
+    void affichageDansConsole() {
+
+        // TODO à corriger : manuellement, l'affichage fonctionne, mais certaines valeurs sont peu explicites
+    }
+
+    @Test
+    void affichageDansFichier() {
+
+        // TODO à corriger : manuellement, même problème que l'affichage console, et en plus il n'affiche que le dernier élément de la liste.
     }
 
 }
