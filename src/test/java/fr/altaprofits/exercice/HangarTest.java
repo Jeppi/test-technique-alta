@@ -133,16 +133,13 @@ class HangarTest {
         helico1.seDeplace(23, 11);
         jetSki1.seDeplace(3, 9);
 
-        assertThat(moto1.getPosition().toString()).isEqualTo(new Point(5, 12).toString());
-        assertThat(voiture1.getPosition().toString()).isEqualTo(new Point(17, 13).toString());
-        assertThat(avion1.getPosition().toString()).isEqualTo(new Point(30, 60).toString());
-        assertThat(avion2.getPosition().toString()).isEqualTo(new Point(25, 55).toString());
-        assertThat(helico1.getPosition().toString()).isEqualTo(new Point(23, 11).toString());
-        assertThat(jetSki1.getPosition().toString()).isEqualTo(new Point(3, 9).toString());
+        assertThat(moto1.getPosition()).isEqualTo(new Point(5, 12));
+        assertThat(voiture1.getPosition()).isEqualTo(new Point(17, 13));
+        assertThat(avion1.getPosition()).isEqualTo(new Point(30, 60));
+        assertThat(avion2.getPosition()).isEqualTo(new Point(25, 55));
+        assertThat(helico1.getPosition()).isEqualTo(new Point(23, 11));
+        assertThat(jetSki1.getPosition()).isEqualTo(new Point(3, 9));
 
-        // TODO: Point est un value object et sa méthode equals() devraient être surchargée pour
-        // comparer des valeurs et non des objets. A transformer en record, qui apportera les overwrite
-        // equals et hash nécessaires. On n'aura plus besoin du toString() dans le test.
     }
 
     @Test
