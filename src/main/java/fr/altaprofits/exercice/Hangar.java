@@ -59,18 +59,19 @@ public class Hangar {
 		return mList.size() + vList.size();
 	}
 
-	public int nombreDeVehiculeDansPort() {
+	public int nombreDeVehiculesDansPort() {
 		return jList.size() + bList.size();
 	}
 
-	public int nombreDeVehiculeDansHangar() {
-		return nombreDeVehiculeDansPort() + nombreDeVehiculesDansAeroport() + nombreDeVehiculesDansGarage();
+	public int nombreDeVehiculesDansHangar() {
+		return nombreDeVehiculesDansPort() + nombreDeVehiculesDansAeroport() + nombreDeVehiculesDansGarage();
 	}
 
 	private void imprimerDansConsole(Avion a) {
 		System.out.println("Vehicule de type "  + a.getClass().getSimpleName());
 		System.out.println(a);
 	}
+
 
 	private void imprimerDansConsole(Helicoptere h) {
 		System.out.println("Vehicule de type "  + h.getClass().getSimpleName());

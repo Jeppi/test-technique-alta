@@ -23,10 +23,10 @@ public class Application {
 
         hangar.imprimerToutDansConsole();
 
-        System.out.println("Nombre de véhicule dans le hangar : " + hangar.nombreDeVehiculeDansHangar());
-        System.out.println("Nombre de véhicule dans l'aéroport : " + hangar.nombreDeVehiculesDansAeroport());
-        System.out.println("Nombre de véhicule dans le garage : " + hangar.nombreDeVehiculesDansGarage());
-        System.out.println("Nombre de véhicule dans le port : " + hangar.nombreDeVehiculeDansPort());
+        System.out.println("Nombre de vï¿½hicule dans le hangar : " + hangar.nombreDeVehiculesDansHangar());
+        System.out.println("Nombre de vï¿½hicule dans l'aï¿½roport : " + hangar.nombreDeVehiculesDansAeroport());
+        System.out.println("Nombre de vï¿½hicule dans le garage : " + hangar.nombreDeVehiculesDansGarage());
+        System.out.println("Nombre de vï¿½hicule dans le port : " + hangar.nombreDeVehiculesDansPort());
 
         avion1.seDeplace(10, 30);
         avion1.seDeplace(30, 60);
