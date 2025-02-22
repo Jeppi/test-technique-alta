@@ -1,176 +1,70 @@
 package fr.altaprofits.exercice.model;
 
 import fr.altaprofits.exercice.model.vehicule.*;
+import fr.altaprofits.exercice.model.vehicule.strategie.Roulant;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
-import java.util.HashSet;
+import java.util.*;
+
+import static fr.altaprofits.exercice.model.Section.*;
 
 public class Hangar {
-	// Contient les avions
-	private HashSet<Avion> aList = new HashSet<>();
 
-	// Contient les hélicopteres
-	private HashSet<Helicoptere> hList = new HashSet<>();
+	// Représente les différentes sections du hangar
+	Map<Section, Set<Vehicule>> sections = new HashMap<>();
 
-	// Contient les bateaux
-	private HashSet<Bateau> bList = new HashSet<>();
-
-	// Contient les jetskis
-	private HashSet<JetSki> jList = new HashSet<>();
-
-	// Contient les motos
-	private HashSet<Moto> mList = new HashSet<>();
-
-	// Contient les voitures
-	private HashSet<Voiture> vList = new HashSet<>();
-
-	public void entre(Avion a) {
-		aList.add(a);
+	public Hangar() {
+		// Initialisation des différentes sections
+		for (Section section : Section.values()) {
+			sections.put(section, new HashSet<>());
+		}
 	}
 
-	public void entre(Helicoptere h) {
-		hList.add(h);
+	public void entre(Vehicule vehicule) {
+		sections.get(vehicule.getSection()).add(vehicule);
 	}
 
-	public void entre(Bateau b) {
-		bList.add(b);
-	}
-
-	public void entre(JetSki j) {
-		jList.add(j);
-	}
-
-	public void entre(Moto m) {
-		mList.add(m);
-	}
-
-	public void entre(Voiture v) {
-		vList.add(v);
-	}
 
 	public int nombreDeVehiculesDansAeroport() {
-		return aList.size() + hList.size();
+		return sections.get(AEROPORT).size();
 	}
 
 	public int nombreDeVehiculesDansGarage() {
-		return mList.size() + vList.size();
+		return sections.get(GARAGE).size();
 	}
 
 	public int nombreDeVehiculesDansPort() {
-		return jList.size() + bList.size();
+		return sections.get(PORT).size();
 	}
 
 	public int nombreDeVehiculesDansHangar() {
 		return nombreDeVehiculesDansPort() + nombreDeVehiculesDansAeroport() + nombreDeVehiculesDansGarage();
 	}
 
-	private void imprimerDansConsole(Avion a) {
-		System.out.println("Vehicule de type "  + a.getClass().getSimpleName());
-		System.out.println(a);
+	private static void imprimerDansConsole(Vehicule vehicule) {
+		System.out.println("Véhicule de type "  + vehicule.getClass().getSimpleName());
+		System.out.println(vehicule);
 	}
 
-
-	private void imprimerDansConsole(Helicoptere h) {
-		System.out.println("Vehicule de type "  + h.getClass().getSimpleName());
-		System.out.println(h);
+	private static void imprimerDansFichier(Vehicule vehicule, PrintStream printStream) throws FileNotFoundException {
+		printStream.println("Véhicule de type "  + vehicule.getClass().getSimpleName());
+		printStream.println(vehicule);
 	}
 
-	private void imprimerDansConsole(Bateau b) {
-		System.out.println("Vehicule de type "  + b.getClass().getSimpleName());
-		System.out.println(b);
-	}
-
-	private void imprimerDansConsole(JetSki j) {
-		System.out.println("Vehicule de type "  + j.getClass().getSimpleName());
-		System.out.println(j);
-	}
-
-	private void imprimerDansConsole(Moto m) {
-		System.out.println("Vehicule de type "  + m.getClass().getSimpleName());
-		System.out.println(m);
-	}
-
-	private void imprimerDansConsole(Voiture v) {
-		System.out.println("Vehicule de type "  + v.getClass().getSimpleName());
-		System.out.println(v);
-	}
-
-	private void imprimerDansFichier(Avion a, File f) throws FileNotFoundException {
-		PrintStream printStream = new PrintStream(new FileOutputStream(f));
-		printStream.println("Vehicule de type "  + a.getClass().getSimpleName());
-		printStream.println(a);
-	}
-
-	private void imprimerDansFichier(Helicoptere h, File f) throws FileNotFoundException {
-		PrintStream printStream = new PrintStream(new FileOutputStream(f));
-		printStream.println("Vehicule de type "  + h.getClass().getSimpleName());
-		printStream.println(h);
-	}
-
-	private void imprimerDansFichier(Bateau b, File f) throws FileNotFoundException {
-		PrintStream printStream = new PrintStream(new FileOutputStream(f));
-		printStream.println("Vehicule de type "  + b.getClass().getSimpleName());
-		printStream.println(b);
-	}
-
-	private void imprimerDansFichier(JetSki j, File f) throws FileNotFoundException {
-		PrintStream printStream = new PrintStream(new FileOutputStream(f));
-		printStream.println("Vehicule de type "  + j.getClass().getSimpleName());
-		printStream.println(j);
-	}
-
-	private void imprimerDansFichier(Moto m, File f) throws FileNotFoundException {
-		PrintStream printStream = new PrintStream(new FileOutputStream(f));
-		printStream.println("Vehicule de type "  + m.getClass().getSimpleName());
-		printStream.println(m);
-	}
-
-	private void imprimerDansFichier(Voiture v, File f) throws FileNotFoundException {
-		PrintStream printStream = new PrintStream(new FileOutputStream(f));
-		printStream.println("Vehicule de type "  + v.getClass().getSimpleName());
-		printStream.println(v);
-	}
 
 	public void imprimerToutDansConsole() {
-		for (Avion a : aList)
-			imprimerDansConsole(a);
-
-		for (Helicoptere h : hList)
-			imprimerDansConsole(h);
-
-		for (Bateau b : bList)
-			imprimerDansConsole(b);
-
-		for (JetSki j : jList)
-			imprimerDansConsole(j);
-
-		for (Moto m : mList)
-			imprimerDansConsole(m);
-
-		for (Voiture v : vList)
-			imprimerDansConsole(v);
+		for (Set<Vehicule> vehicules : sections.values()) {
+			vehicules.forEach(Hangar::imprimerDansConsole);
+		}
 	}
 
-	public void imprimerToutDansFichier(File f) throws FileNotFoundException {
-		for (Avion a : aList)
-			imprimerDansFichier(a, f);
-
-		for (Helicoptere h : hList)
-			imprimerDansFichier(h, f);
-
-		for (Bateau b : bList)
-			imprimerDansFichier(b, f);
-
-		for (JetSki j : jList)
-			imprimerDansFichier(j, f);
-
-		for (Moto m : mList)
-			imprimerDansFichier(m, f);
-
-		for (Voiture v : vList)
-			imprimerDansFichier(v, f);
-	}
+	/*public void imprimerToutDansFichier(File f) throws FileNotFoundException {
+		PrintStream printStream = new PrintStream(new FileOutputStream(f));
+		for (Set<Vehicule> vehicules : sections.values()) {
+			vehicules.forEach(v -> imprimerDansFichier(v, printStream));
+		}
+	}*/
 }

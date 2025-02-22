@@ -25,10 +25,10 @@ public class Application {
 
         hangar.imprimerToutDansConsole();
 
-        System.out.println("Nombre de v�hicule dans le hangar : " + hangar.nombreDeVehiculesDansHangar());
-        System.out.println("Nombre de v�hicule dans l'a�roport : " + hangar.nombreDeVehiculesDansAeroport());
-        System.out.println("Nombre de v�hicule dans le garage : " + hangar.nombreDeVehiculesDansGarage());
-        System.out.println("Nombre de v�hicule dans le port : " + hangar.nombreDeVehiculesDansPort());
+        System.out.println("Nombre de véhicules dans le hangar : " + hangar.nombreDeVehiculesDansHangar());
+        System.out.println("Nombre de véhicules dans l'aéroport : " + hangar.nombreDeVehiculesDansAeroport());
+        System.out.println("Nombre de véhicules dans le garage : " + hangar.nombreDeVehiculesDansGarage());
+        System.out.println("Nombre de véhicules dans le port : " + hangar.nombreDeVehiculesDansPort());
 
         moto1.seDeplace(5, 12);
         voiture1.seDeplace(17, 13);
