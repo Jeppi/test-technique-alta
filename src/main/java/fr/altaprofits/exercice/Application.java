@@ -23,7 +23,7 @@ public class Application {
         jetSki1.entreDansHangar(hangar);
         bateau1.entreDansHangar(hangar);
 
-        hangar.imprimerToutDansConsole();
+        hangar.imprimerTousLesVehiculesDuHangarDansConsole();
 
         System.out.println("Nombre de véhicules dans le hangar : " + hangar.nombreDeVehiculesDansHangar());
         System.out.println("Nombre de véhicules dans l'aéroport : " + hangar.nombreDeVehiculesDansAeroport());

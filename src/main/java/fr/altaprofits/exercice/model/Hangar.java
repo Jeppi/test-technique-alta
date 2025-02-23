@@ -49,17 +49,15 @@ public class Hangar {
 	}
 
 	private static void imprimerDansConsole(Vehicule vehicule) {
-		System.out.println("Véhicule de type "  + vehicule.getClass().getSimpleName());
-		System.out.println(vehicule);
+		System.out.println(vehicule.getDescriptif());
 	}
 
 	private static void imprimerDansFichier(Vehicule vehicule, PrintStream printStream) throws FileNotFoundException {
-		printStream.println("Véhicule de type "  + vehicule.getClass().getSimpleName());
-		printStream.println(vehicule);
+		printStream.println(vehicule.getDescriptif());
 	}
 
 
-	public void imprimerToutDansConsole() {
+	public void imprimerTousLesVehiculesDuHangarDansConsole() {
 		for (Set<Vehicule> vehicules : sections.values()) {
 			vehicules.forEach(Hangar::imprimerDansConsole);
 		}

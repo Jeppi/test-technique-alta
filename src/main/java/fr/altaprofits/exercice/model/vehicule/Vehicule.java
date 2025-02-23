@@ -18,7 +18,10 @@ public abstract class Vehicule {
 
     // Identifiant
     protected final String reference;
+
     protected Point position;
+    protected final String descriptif;
+
 
     public Section getSection() {
         return section;
@@ -36,6 +39,10 @@ public abstract class Vehicule {
         return position;
     }
 
+    public String getDescriptif() {
+        return descriptif;
+    }
+
     public void setPosition(Point position) {
         this.position = position;
     }
@@ -47,6 +54,8 @@ public abstract class Vehicule {
         deplacement = strategieDeplacement;
         section = sectionDeStationnement;
         etat = new HorsHangar();
+        descriptif = String.format("Véhicule de type %s (Ref : %s)",
+                getClass().getSimpleName(), reference);
     }
 
     public void entreDansHangar(Hangar hangar) {
@@ -59,13 +68,11 @@ public abstract class Vehicule {
 
     public void seDeplace(int x, int y) {
         if (etat.estStationne()) {
-            System.out.println("Le véhicule est stationné, il doit être sorti du hangar pour pouvoir se déplacer.");
+            System.out.printf("Le %s est stationné, il doit être sorti du hangar pour pouvoir se déplacer.\n",
+                    descriptif);
             return;
         }
 
-        String descriptifVehicule = String.format("Le Véhicule de type %s (Ref : %s)",
-                getClass().getSimpleName(), reference);
-
-        position = deplacement.seDeplace(descriptifVehicule, position, new Point(x, y));
+        position = deplacement.seDeplace(descriptif, position, new Point(x, y));
     };
 }
