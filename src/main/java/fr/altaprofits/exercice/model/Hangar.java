@@ -1,17 +1,18 @@
 package fr.altaprofits.exercice.model;
 
+import fr.altaprofits.exercice.commun.Point;
 import fr.altaprofits.exercice.model.vehicule.*;
-import fr.altaprofits.exercice.model.vehicule.strategie.Roulant;
 
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.PrintStream;
 import java.util.*;
 
 import static fr.altaprofits.exercice.model.Section.*;
 
 public class Hangar {
+
+	// Position du hangar
+	public final Point POSITION_HANGAR = new Point(0, 0);
 
 	// Représente les différentes sections du hangar
 	Map<Section, Set<Vehicule>> sections = new HashMap<>();
@@ -23,10 +24,13 @@ public class Hangar {
 		}
 	}
 
-	public void entre(Vehicule vehicule) {
+	public void ajoute(Vehicule vehicule) {
 		sections.get(vehicule.getSection()).add(vehicule);
 	}
 
+	public void retire(Vehicule vehicule) {
+		sections.get(vehicule.getSection()).remove(vehicule);
+	}
 
 	public int nombreDeVehiculesDansAeroport() {
 		return sections.get(AEROPORT).size();

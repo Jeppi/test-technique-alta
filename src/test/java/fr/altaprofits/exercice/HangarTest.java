@@ -25,26 +25,51 @@ class HangarTest {
     @Test
     void entreDansHangar() {
         // On fait entrer au moins un élément de chaque Véhicule
-        hangar.entre(moto1);
-        hangar.entre(voiture1);
-        hangar.entre(avion1);
-        hangar.entre(avion2);
-        hangar.entre(helico1);
-        hangar.entre(jetSki1);
-        hangar.entre(bateau1);
+        moto1.entreDansHangar(hangar);
+        voiture1.entreDansHangar(hangar);
+        avion1.entreDansHangar(hangar);
+        avion2.entreDansHangar(hangar);
+        helico1.entreDansHangar(hangar);
+        jetSki1.entreDansHangar(hangar);
+        bateau1.entreDansHangar(hangar);
 
         assertThat(hangar.nombreDeVehiculesDansHangar()).isEqualTo(7);
 
         // On refait entrer des véhicules déjà présents
-        hangar.entre(moto1);
-        hangar.entre(voiture1);
+        moto1.entreDansHangar(hangar);
+        voiture1.entreDansHangar(hangar);
 
         assertThat(hangar.nombreDeVehiculesDansHangar()).isEqualTo(7);
 
         // On ajoute un nouveau véhicule non présent
-        hangar.entre(new Moto());
+        new Moto().entreDansHangar(hangar);
 
         assertThat(hangar.nombreDeVehiculesDansHangar()).isEqualTo(8);
+
+    }
+
+    @Test
+    void entreDansHangarKO() {
+        // On déplace les véhicules, ils ne sont plus à la localisation du hangar (0,0)
+        moto1.seDeplace(5, 12);
+        voiture1.seDeplace(17, 13);
+        avion1.seDeplace(10, 30);
+        avion2.seDeplace(25, 55);
+        helico1.seDeplace(23, 11);
+        jetSki1.seDeplace(3, 9);
+        bateau1.seDeplace(31, 33);
+
+        // On essaye de faire entrer les véhicules dans le hangar
+        moto1.entreDansHangar(hangar);
+        voiture1.entreDansHangar(hangar);
+        avion1.entreDansHangar(hangar);
+        avion2.entreDansHangar(hangar);
+        helico1.entreDansHangar(hangar);
+        jetSki1.entreDansHangar(hangar);
+        bateau1.entreDansHangar(hangar);
+
+        // Aucun ne peut entrer
+        assertThat(hangar.nombreDeVehiculesDansHangar()).isEqualTo(0);
 
     }
 
@@ -52,13 +77,13 @@ class HangarTest {
     void nombreDeVehiculesDansAeroport() {
 
         // On fait entrer au moins un élément de chaque Véhicule
-        hangar.entre(moto1);
-        hangar.entre(voiture1);
-        hangar.entre(avion1);
-        hangar.entre(avion2);
-        hangar.entre(helico1);
-        hangar.entre(jetSki1);
-        hangar.entre(bateau1);
+        moto1.entreDansHangar(hangar);
+        voiture1.entreDansHangar(hangar);
+        avion1.entreDansHangar(hangar);
+        avion2.entreDansHangar(hangar);
+        helico1.entreDansHangar(hangar);
+        jetSki1.entreDansHangar(hangar);
+        bateau1.entreDansHangar(hangar);
 
         assertThat(hangar.nombreDeVehiculesDansAeroport()).isEqualTo(3);
 
@@ -68,13 +93,13 @@ class HangarTest {
     void nombreDeVehiculesDansGarage() {
 
         // On fait entrer au moins un élément de chaque Véhicule
-        hangar.entre(moto1);
-        hangar.entre(voiture1);
-        hangar.entre(avion1);
-        hangar.entre(avion2);
-        hangar.entre(helico1);
-        hangar.entre(jetSki1);
-        hangar.entre(bateau1);
+        moto1.entreDansHangar(hangar);
+        voiture1.entreDansHangar(hangar);
+        avion1.entreDansHangar(hangar);
+        avion2.entreDansHangar(hangar);
+        helico1.entreDansHangar(hangar);
+        jetSki1.entreDansHangar(hangar);
+        bateau1.entreDansHangar(hangar);
 
         assertThat(hangar.nombreDeVehiculesDansGarage()).isEqualTo(2);
 
@@ -84,13 +109,13 @@ class HangarTest {
     void nombreDeVehiculesDansPort() {
 
         // On fait entrer au moins un élément de chaque Véhicule
-        hangar.entre(moto1);
-        hangar.entre(voiture1);
-        hangar.entre(avion1);
-        hangar.entre(avion2);
-        hangar.entre(helico1);
-        hangar.entre(jetSki1);
-        hangar.entre(bateau1);
+        moto1.entreDansHangar(hangar);
+        voiture1.entreDansHangar(hangar);
+        avion1.entreDansHangar(hangar);
+        avion2.entreDansHangar(hangar);
+        helico1.entreDansHangar(hangar);
+        jetSki1.entreDansHangar(hangar);
+        bateau1.entreDansHangar(hangar);
 
         assertThat(hangar.nombreDeVehiculesDansPort()).isEqualTo(2);
     }
@@ -99,13 +124,13 @@ class HangarTest {
     void nombreDeVehiculesDansHangar() {
 
         // On fait entrer au moins un élément de chaque Véhicule
-        hangar.entre(moto1);
-        hangar.entre(voiture1);
-        hangar.entre(avion1);
-        hangar.entre(avion2);
-        hangar.entre(helico1);
-        hangar.entre(jetSki1);
-        hangar.entre(bateau1);
+        moto1.entreDansHangar(hangar);
+        voiture1.entreDansHangar(hangar);
+        avion1.entreDansHangar(hangar);
+        avion2.entreDansHangar(hangar);
+        helico1.entreDansHangar(hangar);
+        jetSki1.entreDansHangar(hangar);
+        bateau1.entreDansHangar(hangar);
 
         assertThat(hangar.nombreDeVehiculesDansHangar()).isEqualTo(7);
     }
@@ -145,6 +170,37 @@ class HangarTest {
         assertThat(helico1.getPosition()).isEqualTo(new Point(23, 11));
         assertThat(jetSki1.getPosition()).isEqualTo(new Point(3, 9));
         assertThat(bateau1.getPosition()).isEqualTo(new Point(31, 33));
+
+    }
+
+    @Test
+    void vehiculesSeDeplacentKO() {
+
+        // On fait entrer les véhicules dans le hangar, ils ne peuvent plus se déplacer avant d'en sortir
+        moto1.entreDansHangar(hangar);
+        voiture1.entreDansHangar(hangar);
+        avion1.entreDansHangar(hangar);
+        avion2.entreDansHangar(hangar);
+        helico1.entreDansHangar(hangar);
+        jetSki1.entreDansHangar(hangar);
+        bateau1.entreDansHangar(hangar);
+
+        moto1.seDeplace(5, 12);
+        voiture1.seDeplace(17, 13);
+        avion1.seDeplace(10, 30);
+        avion1.seDeplace(30, 60);
+        avion2.seDeplace(25, 55);
+        helico1.seDeplace(23, 11);
+        jetSki1.seDeplace(3, 9);
+        bateau1.seDeplace(31, 33);
+
+        assertThat(moto1.getPosition()).isEqualTo(hangar.POSITION_HANGAR);
+        assertThat(voiture1.getPosition()).isEqualTo(hangar.POSITION_HANGAR);
+        assertThat(avion1.getPosition()).isEqualTo(hangar.POSITION_HANGAR);
+        assertThat(avion2.getPosition()).isEqualTo(hangar.POSITION_HANGAR);
+        assertThat(helico1.getPosition()).isEqualTo(hangar.POSITION_HANGAR);
+        assertThat(jetSki1.getPosition()).isEqualTo(hangar.POSITION_HANGAR);
+        assertThat(bateau1.getPosition()).isEqualTo(hangar.POSITION_HANGAR);
 
     }
 

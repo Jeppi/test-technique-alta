@@ -15,15 +15,28 @@ public class Application {
         JetSki      jetSki1 = new JetSki();
         Bateau      bateau1 = new Bateau();
 
-        hangar.entre(moto1);
-        hangar.entre(avion1);
-        hangar.entre(avion2);
-        hangar.entre(helico1);
-        hangar.entre(jetSki1);
-        hangar.entre(voiture1);
-        hangar.entre(bateau1);
+        moto1.entreDansHangar(hangar);
+        voiture1.entreDansHangar(hangar);
+        avion1.entreDansHangar(hangar);
+        avion2.entreDansHangar(hangar);
+        helico1.entreDansHangar(hangar);
+        jetSki1.entreDansHangar(hangar);
+        bateau1.entreDansHangar(hangar);
 
         hangar.imprimerToutDansConsole();
+
+        System.out.println("Nombre de véhicules dans le hangar : " + hangar.nombreDeVehiculesDansHangar());
+        System.out.println("Nombre de véhicules dans l'aéroport : " + hangar.nombreDeVehiculesDansAeroport());
+        System.out.println("Nombre de véhicules dans le garage : " + hangar.nombreDeVehiculesDansGarage());
+        System.out.println("Nombre de véhicules dans le port : " + hangar.nombreDeVehiculesDansPort());
+
+        moto1.sortDuHangar(hangar);
+        voiture1.sortDuHangar(hangar);
+        avion1.sortDuHangar(hangar);
+        avion2.sortDuHangar(hangar);
+        helico1.sortDuHangar(hangar);
+        jetSki1.sortDuHangar(hangar);
+        bateau1.sortDuHangar(hangar);
 
         System.out.println("Nombre de véhicules dans le hangar : " + hangar.nombreDeVehiculesDansHangar());
         System.out.println("Nombre de véhicules dans l'aéroport : " + hangar.nombreDeVehiculesDansAeroport());
