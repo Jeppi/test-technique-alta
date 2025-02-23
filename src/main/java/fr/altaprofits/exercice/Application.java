@@ -6,6 +6,9 @@ import fr.altaprofits.exercice.model.vehicule.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 
+import static fr.altaprofits.exercice.entreeSortie.Impression.imprimerTousLesVehiculesDuHangarDansConsole;
+import static fr.altaprofits.exercice.entreeSortie.Impression.imprimerTousLesVehiculesDuHangarDansFichier;
+
 public class Application {
     public static void main(String[] args) {
         Hangar hangar = new Hangar();
@@ -26,10 +29,10 @@ public class Application {
         jetSki1.entreDansHangar(hangar);
         bateau1.entreDansHangar(hangar);
 
-        hangar.imprimerTousLesVehiculesDuHangarDansConsole();
+        imprimerTousLesVehiculesDuHangarDansConsole(hangar.getSections());
 
         try {
-            hangar.imprimerTousLesVehiculesDuHangarDansFichier(new File("hangar.txt"));
+            imprimerTousLesVehiculesDuHangarDansFichier(new File("hangar.txt"), hangar.getSections());
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }

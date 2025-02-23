@@ -19,19 +19,23 @@ public class Hangar {
 	// Représente les différentes sections du hangar
 	Map<Section, Set<Vehicule>> sections = new HashMap<>();
 
+	public Map<Section, Set<Vehicule>> getSections() {
+		return sections;
+	}
+
 	public Hangar() {
 		// Initialisation des différentes sections
 		for (Section section : Section.values()) {
 			sections.put(section, new HashSet<>());
 		}
 	}
-
 	// Doit être appelé par véhicule qui s'occupe de changer l'état de Véhicule
+
 	public void ajoute(Vehicule vehicule) {
 		sections.get(vehicule.getSection()).add(vehicule);
 	}
-
 	// Doit être appelé par véhicule qui s'occupe de changer l'état de Véhicule
+
 	public void retire(Vehicule vehicule) {
 		sections.get(vehicule.getSection()).remove(vehicule);
 	}
@@ -55,26 +59,4 @@ public class Hangar {
 				.orElse(0);
 	}
 
-	private static void imprimerDansConsole(Vehicule vehicule) {
-		System.out.println(vehicule.getDescriptif());
-	}
-
-	private static void imprimerSectionDansFichier(Set<Vehicule> vehicules, PrintStream printStream)  {
-		for (Vehicule vehicule : vehicules) {
-			printStream.println(vehicule.getDescriptif());
-		}
-	}
-
-
-	public void imprimerTousLesVehiculesDuHangarDansConsole() {
-		for (Set<Vehicule> vehicules : sections.values()) {
-			vehicules.forEach(Hangar::imprimerDansConsole);
-		}
-	}
-
-	public void imprimerTousLesVehiculesDuHangarDansFichier(File f) throws FileNotFoundException {
-		PrintStream printStream = new PrintStream(new FileOutputStream(f));
-		sections.values()
-				.forEach(vehicules -> imprimerSectionDansFichier(vehicules, printStream));
-	}
 }
