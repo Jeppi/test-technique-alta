@@ -1,0 +1,7 @@
+Véhicule de type Moto (Ref : M-1)
+Véhicule de type Voiture (Ref : V-1)
+Véhicule de type JetSki (Ref : J-1)
+Véhicule de type Bateau (Ref : B-1)
+Véhicule de type Avion (Ref : A-1)
+Véhicule de type Helicoptere (Ref : H-1)
+Véhicule de type Avion (Ref : A-2)

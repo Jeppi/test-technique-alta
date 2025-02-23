@@ -3,6 +3,7 @@ package fr.altaprofits.exercice;
 import fr.altaprofits.exercice.commun.Point;
 import fr.altaprofits.exercice.model.Hangar;
 import fr.altaprofits.exercice.model.vehicule.*;
+import net.bytebuddy.implementation.bind.annotation.IgnoreForBinding;
 import org.junit.jupiter.api.Test;
 
 import java.util.Set;
@@ -202,6 +203,14 @@ class HangarTest {
         assertThat(jetSki1.getPosition()).isEqualTo(hangar.POSITION_HANGAR);
         assertThat(bateau1.getPosition()).isEqualTo(hangar.POSITION_HANGAR);
 
+    }
+
+    //@Test
+    void ajouteDesVehiculesSansPasserParEntreDansHangarKO() {
+
+        hangar.ajoute(moto1);
+
+        assertThat(hangar.nombreDeVehiculesDansHangar()).isEqualTo(0);
     }
 
     @Test

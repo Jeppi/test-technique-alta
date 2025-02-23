@@ -3,6 +3,9 @@ package fr.altaprofits.exercice;
 import fr.altaprofits.exercice.model.Hangar;
 import fr.altaprofits.exercice.model.vehicule.*;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+
 public class Application {
     public static void main(String[] args) {
         Hangar hangar = new Hangar();
@@ -24,6 +27,12 @@ public class Application {
         bateau1.entreDansHangar(hangar);
 
         hangar.imprimerTousLesVehiculesDuHangarDansConsole();
+
+        try {
+            hangar.imprimerTousLesVehiculesDuHangarDansFichier(new File("hangar.txt"));
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
 
         System.out.println("Nombre de véhicules dans le hangar : " + hangar.nombreDeVehiculesDansHangar());
         System.out.println("Nombre de véhicules dans l'aéroport : " + hangar.nombreDeVehiculesDansAeroport());

@@ -3,7 +3,9 @@ package fr.altaprofits.exercice.model;
 import fr.altaprofits.exercice.commun.Point;
 import fr.altaprofits.exercice.model.vehicule.*;
 
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.PrintStream;
 import java.util.*;
 
@@ -24,10 +26,12 @@ public class Hangar {
 		}
 	}
 
+	// Doit être appelé par véhicule qui s'occupe de changer l'état de Véhicule
 	public void ajoute(Vehicule vehicule) {
 		sections.get(vehicule.getSection()).add(vehicule);
 	}
 
+	// Doit être appelé par véhicule qui s'occupe de changer l'état de Véhicule
 	public void retire(Vehicule vehicule) {
 		sections.get(vehicule.getSection()).remove(vehicule);
 	}
@@ -55,8 +59,10 @@ public class Hangar {
 		System.out.println(vehicule.getDescriptif());
 	}
 
-	private static void imprimerDansFichier(Vehicule vehicule, PrintStream printStream) throws FileNotFoundException {
-		printStream.println(vehicule.getDescriptif());
+	private static void imprimerSectionDansFichier(Set<Vehicule> vehicules, PrintStream printStream)  {
+		for (Vehicule vehicule : vehicules) {
+			printStream.println(vehicule.getDescriptif());
+		}
 	}
 
 
@@ -66,10 +72,9 @@ public class Hangar {
 		}
 	}
 
-	/*public void imprimerToutDansFichier(File f) throws FileNotFoundException {
+	public void imprimerTousLesVehiculesDuHangarDansFichier(File f) throws FileNotFoundException {
 		PrintStream printStream = new PrintStream(new FileOutputStream(f));
-		for (Set<Vehicule> vehicules : sections.values()) {
-			vehicules.forEach(v -> imprimerDansFichier(v, printStream));
-		}
-	}*/
+		sections.values()
+				.forEach(vehicules -> imprimerSectionDansFichier(vehicules, printStream));
+	}
 }
