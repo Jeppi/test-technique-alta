@@ -45,7 +45,10 @@ public class Hangar {
 	}
 
 	public int nombreDeVehiculesDansHangar() {
-		return nombreDeVehiculesDansPort() + nombreDeVehiculesDansAeroport() + nombreDeVehiculesDansGarage();
+		return sections.values().stream()
+				.map(Set::size)
+				.reduce(Integer::sum)
+				.orElse(0);
 	}
 
 	private static void imprimerDansConsole(Vehicule vehicule) {
