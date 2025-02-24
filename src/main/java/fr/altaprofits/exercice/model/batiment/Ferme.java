@@ -61,4 +61,18 @@ public class Ferme implements Batiment<Animal, SectionFerme> {
 				.orElse(0);
 	}
 
+	@Override
+	public int nombreElementsVolants() {
+		return 0;
+	}
+
+	@Override
+	public int nombreElementsRoulants() {
+		return 0;
+	}
+
+	@Override
+	public int nombreElementsNavigants() {
+		return 0;
+	}
 }

@@ -118,7 +118,7 @@ class HangarTest {
         hydravionAeroport.entreDansHangar(hangar);
 
 
-        assertThat(hangar.nombreElementsDansBatiment()).isEqualTo(2);
+        assertThat(hangar.nombreElements(GARAGE)).isEqualTo(2);
 
     }
 
@@ -280,16 +280,6 @@ class HangarTest {
 
     }
 
-    @Test
-    void affichageDansConsole() {
 
-        // TODO à corriger : manuellement, l'affichage fonctionne, mais certaines valeurs sont peu explicites
-    }
-
-    @Test
-    void affichageDansFichier() {
-
-        // TODO à corriger : manuellement, même problème que l'affichage console, et en plus il n'affiche que le dernier élément de la liste.
-    }
 
 }

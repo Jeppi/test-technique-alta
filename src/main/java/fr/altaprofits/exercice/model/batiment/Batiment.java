@@ -18,4 +18,9 @@ public interface Batiment<T extends Element, S extends Section<T>> {
     int nombreElements(S section);
 
     int nombreElementsDansBatiment();
+
+    // Modification fonctionnelle : Ajout du nombre d'éléments volant, roulant, Navigant pour chaque bâtiment.
+    int nombreElementsVolants();
+    int nombreElementsRoulants();
+    int nombreElementsNavigants();
 }
