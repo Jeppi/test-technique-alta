@@ -1,6 +1,7 @@
-package fr.altaprofits.exercice.model.animal;
+package fr.altaprofits.exercice.model.animal.etat;
 
 import fr.altaprofits.exercice.model.Etat;
+import fr.altaprofits.exercice.model.animal.Animal;
 import fr.altaprofits.exercice.model.batiment.Ferme;
 
 public interface EtatAnimal extends Etat {

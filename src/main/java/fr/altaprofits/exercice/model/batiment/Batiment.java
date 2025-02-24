@@ -15,5 +15,7 @@ public interface Batiment<T extends Element, S extends Section<T>> {
     // Doit être appelé par véhicule qui s'occupe de changer l'état de Véhicule
     void retire(T element);
 
+    int nombreElements(S section);
+
     int nombreElementsDansBatiment();
 }

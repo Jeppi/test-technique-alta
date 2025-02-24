@@ -1,5 +1,6 @@
-package fr.altaprofits.exercice.model.animal;
+package fr.altaprofits.exercice.model.animal.etat;
 
+import fr.altaprofits.exercice.model.animal.Animal;
 import fr.altaprofits.exercice.model.batiment.Ferme;
 
 public class HorsFerme implements EtatAnimal {

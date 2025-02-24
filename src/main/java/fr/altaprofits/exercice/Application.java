@@ -1,6 +1,7 @@
 package fr.altaprofits.exercice;
 
 import fr.altaprofits.exercice.model.batiment.Hangar;
+import fr.altaprofits.exercice.model.batiment.SectionHangar;
 import fr.altaprofits.exercice.model.vehicule.*;
 
 import java.io.File;
@@ -8,6 +9,7 @@ import java.io.FileNotFoundException;
 
 import static fr.altaprofits.exercice.entreeSortie.Impression.imprimerTousLesVehiculesDuHangarDansConsole;
 import static fr.altaprofits.exercice.entreeSortie.Impression.imprimerTousLesVehiculesDuHangarDansFichier;
+import static fr.altaprofits.exercice.model.batiment.SectionHangar.*;
 
 public class Application {
     public static void main(String[] args) {
@@ -38,9 +40,9 @@ public class Application {
         }
 
         System.out.println("Nombre de véhicules dans le hangar : " + hangar.nombreElementsDansBatiment());
-        System.out.println("Nombre de véhicules dans l'aéroport : " + hangar.nombreDeVehiculesDansAeroport());
-        System.out.println("Nombre de véhicules dans le garage : " + hangar.nombreDeVehiculesDansGarage());
-        System.out.println("Nombre de véhicules dans le port : " + hangar.nombreDeVehiculesDansPort());
+        System.out.println("Nombre de véhicules dans l'aéroport : " + hangar.nombreElements(AEROPORT));
+        System.out.println("Nombre de véhicules dans le garage : " + hangar.nombreElements(GARAGE));
+        System.out.println("Nombre de véhicules dans le port : " + hangar.nombreElements(PORT));
 
         moto1.sortDuHangar(hangar);
         voiture1.sortDuHangar(hangar);
@@ -51,9 +53,9 @@ public class Application {
         bateau1.sortDuHangar(hangar);
 
         System.out.println("Nombre de véhicules dans le hangar : " + hangar.nombreElementsDansBatiment());
-        System.out.println("Nombre de véhicules dans l'aéroport : " + hangar.nombreDeVehiculesDansAeroport());
-        System.out.println("Nombre de véhicules dans le garage : " + hangar.nombreDeVehiculesDansGarage());
-        System.out.println("Nombre de véhicules dans le port : " + hangar.nombreDeVehiculesDansPort());
+        System.out.println("Nombre de véhicules dans l'aéroport : " + hangar.nombreElements(AEROPORT));
+        System.out.println("Nombre de véhicules dans le garage : " + hangar.nombreElements(GARAGE));
+        System.out.println("Nombre de véhicules dans le port : " + hangar.nombreElements(PORT));
 
         moto1.seDeplace(5, 12);
         voiture1.seDeplace(17, 13);

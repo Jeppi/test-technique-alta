@@ -99,7 +99,7 @@ class HangarTest {
         hydravion1.entreDansHangar(hangar);
         hydravionAeroport.entreDansHangar(hangar);
 
-        assertThat(hangar.nombreDeVehiculesDansAeroport()).isEqualTo(4);
+        assertThat(hangar.nombreElements(AEROPORT)).isEqualTo(4);
 
     }
 
@@ -118,7 +118,7 @@ class HangarTest {
         hydravionAeroport.entreDansHangar(hangar);
 
 
-        assertThat(hangar.nombreDeVehiculesDansGarage()).isEqualTo(2);
+        assertThat(hangar.nombreElementsDansBatiment()).isEqualTo(2);
 
     }
 
@@ -136,7 +136,7 @@ class HangarTest {
         hydravion1.entreDansHangar(hangar);
         hydravionAeroport.entreDansHangar(hangar);
 
-        assertThat(hangar.nombreDeVehiculesDansPort()).isEqualTo(3);
+        assertThat(hangar.nombreElements(PORT)).isEqualTo(3);
     }
 
     @Test

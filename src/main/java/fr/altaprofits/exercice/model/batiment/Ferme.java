@@ -48,7 +48,8 @@ public class Ferme implements Batiment<Animal, SectionFerme> {
 		sections.get(animal.getSection()).remove(animal);
 	}
 
-	public int nombreAnimaux(SectionFerme sectionFerme) {
+	@Override
+	public int nombreElements(SectionFerme sectionFerme) {
 		return sections.get(sectionFerme).size();
 	}
 

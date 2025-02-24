@@ -96,9 +96,9 @@ class FermeTest {
 
         assertThat(ferme.nombreElementsDansBatiment()).isEqualTo(9);
 
-        assertThat(ferme.nombreAnimaux(SectionFerme.PIGEONNIER)).isEqualTo(2);
-        assertThat(ferme.nombreAnimaux(SectionFerme.ETABLE)).isEqualTo(4);
-        assertThat(ferme.nombreAnimaux(SectionFerme.ETANG)).isEqualTo(3);
+        assertThat(ferme.nombreElements(SectionFerme.PIGEONNIER)).isEqualTo(2);
+        assertThat(ferme.nombreElements(SectionFerme.ETABLE)).isEqualTo(4);
+        assertThat(ferme.nombreElements(SectionFerme.ETANG)).isEqualTo(3);
 
     }
 

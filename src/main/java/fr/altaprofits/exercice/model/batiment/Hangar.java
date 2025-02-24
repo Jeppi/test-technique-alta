@@ -52,16 +52,9 @@ public class Hangar implements Batiment<Vehicule, SectionHangar> {
 		sections.get(vehicule.getSection()).remove(vehicule);
 	}
 
-	public int nombreDeVehiculesDansAeroport() {
-		return sections.get(AEROPORT).size();
-	}
-
-	public int nombreDeVehiculesDansGarage() {
-		return sections.get(GARAGE).size();
-	}
-
-	public int nombreDeVehiculesDansPort() {
-		return sections.get(PORT).size();
+	@Override
+	public int nombreElements(SectionHangar sectionHangar) {
+		return sections.get(sectionHangar).size();
 	}
 
 	@Override

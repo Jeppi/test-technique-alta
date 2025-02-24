@@ -2,6 +2,8 @@ package fr.altaprofits.exercice.model.animal;
 
 import fr.altaprofits.exercice.commun.Point;
 import fr.altaprofits.exercice.model.Element;
+import fr.altaprofits.exercice.model.animal.etat.EtatAnimal;
+import fr.altaprofits.exercice.model.animal.etat.HorsFerme;
 import fr.altaprofits.exercice.model.batiment.Ferme;
 import fr.altaprofits.exercice.model.batiment.SectionFerme;
 import fr.altaprofits.exercice.model.strategie.StrategieDeplacement;
