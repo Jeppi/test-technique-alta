@@ -62,7 +62,8 @@ class EnvironnementTest {
         hydravion1.entreDansHangar(hangar);
         hydravionAeroport.entreDansHangar(hangar);
 
-        assertThat(environnement.nombreElementsVolants()).isEqualTo(7);
+        // Les canards sont volants et navigants.
+        assertThat(environnement.nombreElementsVolants()).isEqualTo(10);
         assertThat(environnement.nombreElementsRoulants()).isEqualTo(6);
         assertThat(environnement.nombreElementsNavigants()).isEqualTo(5);
     }
