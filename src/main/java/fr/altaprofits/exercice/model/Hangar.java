@@ -5,29 +5,31 @@ import fr.altaprofits.exercice.model.vehicule.*;
 
 import java.util.*;
 
-import static fr.altaprofits.exercice.model.Section.*;
+import static fr.altaprofits.exercice.model.SectionHangar.*;
 
-public class Hangar {
+public class Hangar implements Batiment<Vehicule, SectionHangar> {
 
 	// Position du hangar
 	public final Point POSITION_HANGAR = new Point(0, 0);
 
 	// Représente les différentes sections du hangar
-	Map<Section, Set<Vehicule>> sections = new HashMap<>();
+	Map<SectionHangar, Set<Vehicule>> sections = new HashMap<>();
 
-	public Map<Section, Set<Vehicule>> getSections() {
+	@Override
+	public Map<SectionHangar, Set<Vehicule>> getSections() {
 		return sections;
 	}
 
 	public Hangar() {
 		// Initialisation des différentes sections
-		for (Section section : Section.values()) {
+		for (SectionHangar section : SectionHangar.values()) {
 			sections.put(section, new HashSet<>());
 		}
 	}
 
 	// Doit être appelé par véhicule qui s'occupe de changer l'état de Véhicule
 	// Je passe par l'état de véhicule pour gérer cela (solution à améliorer - Ticket)
+	@Override
 	public void ajoute(Vehicule vehicule) {
 		// Si le véhicule n'est pas entré dans le hangar, on ne peut l'ajouter
 		if (!vehicule.getEtat().estStationne()) {
@@ -39,6 +41,7 @@ public class Hangar {
 	}
 
 	// Doit être appelé par véhicule qui s'occupe de changer l'état de Véhicule
+	@Override
 	public void retire(Vehicule vehicule) {
 		// Si le véhicule n'est pas sorti du hangar, on ne peut le retirer
 		if (vehicule.getEtat().estStationne()) {
@@ -61,7 +64,8 @@ public class Hangar {
 		return sections.get(PORT).size();
 	}
 
-	public int nombreDeVehiculesDansHangar() {
+	@Override
+	public int nombreElementsDansBatiment() {
 		return sections.values().stream()
 				.map(Set::size)
 				.reduce(Integer::sum)

@@ -1,7 +1,6 @@
 package fr.altaprofits.exercice.model;
 
-public enum Section {
-    AEROPORT,
-    GARAGE,
-    PORT
+import fr.altaprofits.exercice.model.vehicule.Element;
+
+public interface Section<T extends Element> {
 }

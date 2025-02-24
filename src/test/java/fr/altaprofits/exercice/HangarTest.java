@@ -2,14 +2,14 @@ package fr.altaprofits.exercice;
 
 import fr.altaprofits.exercice.commun.Point;
 import fr.altaprofits.exercice.model.Hangar;
-import fr.altaprofits.exercice.model.Section;
+import fr.altaprofits.exercice.model.SectionHangar;
 import fr.altaprofits.exercice.model.vehicule.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static fr.altaprofits.exercice.model.Section.*;
+import static fr.altaprofits.exercice.model.SectionHangar.*;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 class HangarTest {
@@ -24,7 +24,7 @@ class HangarTest {
     JetSki      jetSki1 = new JetSki();
     Bateau      bateau1 = new Bateau();
     Hydravion   hydravion1 = new Hydravion();
-    Hydravion   hydravionAeroport = new Hydravion().setSection(Section.AEROPORT);
+    Hydravion   hydravionAeroport = new Hydravion().setSection(SectionHangar.AEROPORT);
 
 
     @Test
@@ -40,18 +40,18 @@ class HangarTest {
         hydravion1.entreDansHangar(hangar);
         hydravionAeroport.entreDansHangar(hangar);
 
-        assertThat(hangar.nombreDeVehiculesDansHangar()).isEqualTo(9);
+        assertThat(hangar.nombreElementsDansBatiment()).isEqualTo(9);
 
         // On refait entrer des véhicules déjà présents
         moto1.entreDansHangar(hangar);
         voiture1.entreDansHangar(hangar);
 
-        assertThat(hangar.nombreDeVehiculesDansHangar()).isEqualTo(9);
+        assertThat(hangar.nombreElementsDansBatiment()).isEqualTo(9);
 
         // On ajoute un nouveau véhicule non présent
         new Moto().entreDansHangar(hangar);
 
-        assertThat(hangar.nombreDeVehiculesDansHangar()).isEqualTo(10);
+        assertThat(hangar.nombreElementsDansBatiment()).isEqualTo(10);
 
     }
 
@@ -81,7 +81,7 @@ class HangarTest {
 
 
         // Aucun ne peut entrer
-        assertThat(hangar.nombreDeVehiculesDansHangar()).isEqualTo(0);
+        assertThat(hangar.nombreElementsDansBatiment()).isEqualTo(0);
 
     }
 
@@ -153,7 +153,7 @@ class HangarTest {
         hydravion1.entreDansHangar(hangar);
         hydravionAeroport.entreDansHangar(hangar);
 
-        assertThat(hangar.nombreDeVehiculesDansHangar()).isEqualTo(9);
+        assertThat(hangar.nombreElementsDansBatiment()).isEqualTo(9);
     }
 
     @Test
@@ -239,7 +239,7 @@ class HangarTest {
 
         hangar.ajoute(moto1);
 
-        assertThat(hangar.nombreDeVehiculesDansHangar()).isEqualTo(0);
+        assertThat(hangar.nombreElementsDansBatiment()).isEqualTo(0);
     }
 
     @Test

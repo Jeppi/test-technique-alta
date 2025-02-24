@@ -37,7 +37,7 @@ public class Application {
             throw new RuntimeException(e);
         }
 
-        System.out.println("Nombre de véhicules dans le hangar : " + hangar.nombreDeVehiculesDansHangar());
+        System.out.println("Nombre de véhicules dans le hangar : " + hangar.nombreElementsDansBatiment());
         System.out.println("Nombre de véhicules dans l'aéroport : " + hangar.nombreDeVehiculesDansAeroport());
         System.out.println("Nombre de véhicules dans le garage : " + hangar.nombreDeVehiculesDansGarage());
         System.out.println("Nombre de véhicules dans le port : " + hangar.nombreDeVehiculesDansPort());
@@ -50,7 +50,7 @@ public class Application {
         jetSki1.sortDuHangar(hangar);
         bateau1.sortDuHangar(hangar);
 
-        System.out.println("Nombre de véhicules dans le hangar : " + hangar.nombreDeVehiculesDansHangar());
+        System.out.println("Nombre de véhicules dans le hangar : " + hangar.nombreElementsDansBatiment());
         System.out.println("Nombre de véhicules dans l'aéroport : " + hangar.nombreDeVehiculesDansAeroport());
         System.out.println("Nombre de véhicules dans le garage : " + hangar.nombreDeVehiculesDansGarage());
         System.out.println("Nombre de véhicules dans le port : " + hangar.nombreDeVehiculesDansPort());
