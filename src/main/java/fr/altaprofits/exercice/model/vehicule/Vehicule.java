@@ -4,6 +4,9 @@ import fr.altaprofits.exercice.commun.Point;
 import fr.altaprofits.exercice.model.Element;
 import fr.altaprofits.exercice.model.batiment.Hangar;
 import fr.altaprofits.exercice.model.batiment.SectionHangar;
+import fr.altaprofits.exercice.model.strategie.Navigant;
+import fr.altaprofits.exercice.model.strategie.Roulant;
+import fr.altaprofits.exercice.model.strategie.Volant;
 import fr.altaprofits.exercice.model.vehicule.etat.EtatVehicule;
 import fr.altaprofits.exercice.model.vehicule.etat.HorsHangar;
 import fr.altaprofits.exercice.model.strategie.StrategieDeplacement;
@@ -24,11 +27,6 @@ public abstract class Vehicule implements Element {
 
     protected Point position;
     protected final String descriptif;
-
-    @Override
-    public StrategieDeplacement getDeplacement() {
-        return deplacement;
-    }
 
     @Override
     public SectionHangar getSection() {
@@ -88,5 +86,20 @@ public abstract class Vehicule implements Element {
         }
 
         position = deplacement.seDeplace(descriptif, position, new Point(x, y));
-    };
+    }
+
+    @Override
+    public boolean estVolant() {
+        return deplacement instanceof Volant;
+    }
+
+    @Override
+    public boolean estRoulant() {
+        return deplacement instanceof Roulant;
+    }
+
+    @Override
+    public boolean estNavigant() {
+        return deplacement instanceof Navigant;
+    }
 }

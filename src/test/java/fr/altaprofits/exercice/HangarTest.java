@@ -1,6 +1,7 @@
 package fr.altaprofits.exercice;
 
 import fr.altaprofits.exercice.commun.Point;
+import fr.altaprofits.exercice.model.animal.Vache;
 import fr.altaprofits.exercice.model.batiment.Hangar;
 import fr.altaprofits.exercice.model.batiment.SectionHangar;
 import fr.altaprofits.exercice.model.vehicule.*;
@@ -280,6 +281,24 @@ class HangarTest {
 
     }
 
+    // Ajout fonctionnel de la méthode qui donne le nombre d'éléments par type de déplacement.
+    @Test
+    void nombreElementsParTypeDeDeplacement() {
+
+        moto1.entreDansHangar(hangar);
+        voiture1.entreDansHangar(hangar);
+        avion1.entreDansHangar(hangar);
+        avion2.entreDansHangar(hangar);
+        helico1.entreDansHangar(hangar);
+        jetSki1.entreDansHangar(hangar);
+        bateau1.entreDansHangar(hangar);
+        hydravion1.entreDansHangar(hangar);
+        hydravionAeroport.entreDansHangar(hangar);
+
+        assertThat(hangar.nombreElementsVolants()).isEqualTo(5);
+        assertThat(hangar.nombreElementsRoulants()).isEqualTo(2);
+        assertThat(hangar.nombreElementsNavigants()).isEqualTo(2);
+    }
 
 
 }

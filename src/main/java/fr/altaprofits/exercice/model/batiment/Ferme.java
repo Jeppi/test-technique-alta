@@ -2,11 +2,9 @@ package fr.altaprofits.exercice.model.batiment;
 
 import fr.altaprofits.exercice.commun.Point;
 import fr.altaprofits.exercice.model.animal.Animal;
+import fr.altaprofits.exercice.model.strategie.Volant;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class Ferme implements Batiment<Animal, SectionFerme> {
 
@@ -63,16 +61,25 @@ public class Ferme implements Batiment<Animal, SectionFerme> {
 
 	@Override
 	public int nombreElementsVolants() {
-		return 0;
+		return (int) sections.values().stream()
+				.flatMap(Collection::stream)
+				.filter(Animal::estVolant)
+				.count();
 	}
 
 	@Override
 	public int nombreElementsRoulants() {
-		return 0;
+		return (int) sections.values().stream()
+				.flatMap(Collection::stream)
+				.filter(Animal::estRoulant)
+				.count();
 	}
 
 	@Override
 	public int nombreElementsNavigants() {
-		return 0;
+		return (int) sections.values().stream()
+				.flatMap(Collection::stream)
+				.filter(Animal::estNavigant)
+				.count();
 	}
 }

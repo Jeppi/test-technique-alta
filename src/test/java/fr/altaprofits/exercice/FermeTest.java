@@ -162,11 +162,30 @@ class FermeTest {
     }
 
     @Test
-    void ajouteDesVehiculesSansPasserParentreKO() {
+    void ajouteDesVehiculesSansPasserParEntreKO() {
 
         ferme.ajoute(vache1);
 
         assertThat(ferme.nombreElementsDansBatiment()).isEqualTo(0);
+    }
+
+    // Ajout fonctionnel de la méthode qui donne le nombre d'éléments par type de déplacement.
+    @Test
+    void nombreElementsParTypeDeDeplacement() {
+
+        vache1.entre(ferme);
+        pigeon1.entre(ferme);
+        canard1.entre(ferme);
+        vache2.entre(ferme);
+        pigeon2.entre(ferme);
+        canard2.entre(ferme);
+        canard3.entre(ferme);
+        vache3.entre(ferme);
+        new Vache().entre(ferme);
+
+        assertThat(ferme.nombreElementsVolants()).isEqualTo(2);
+        assertThat(ferme.nombreElementsRoulants()).isEqualTo(4);
+        assertThat(ferme.nombreElementsNavigants()).isEqualTo(3);
     }
 
 }

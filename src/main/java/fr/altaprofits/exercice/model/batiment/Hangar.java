@@ -1,6 +1,7 @@
 package fr.altaprofits.exercice.model.batiment;
 
 import fr.altaprofits.exercice.commun.Point;
+import fr.altaprofits.exercice.model.animal.Animal;
 import fr.altaprofits.exercice.model.vehicule.*;
 
 import java.util.*;
@@ -67,16 +68,25 @@ public class Hangar implements Batiment<Vehicule, SectionHangar> {
 
 	@Override
 	public int nombreElementsVolants() {
-		return 0;
+		return (int) sections.values().stream()
+				.flatMap(Collection::stream)
+				.filter(Vehicule::estVolant)
+				.count();
 	}
 
 	@Override
 	public int nombreElementsRoulants() {
-		return 0;
+		return (int) sections.values().stream()
+				.flatMap(Collection::stream)
+				.filter(Vehicule::estRoulant)
+				.count();
 	}
 
 	@Override
 	public int nombreElementsNavigants() {
-		return 0;
+		return (int) sections.values().stream()
+				.flatMap(Collection::stream)
+				.filter(Vehicule::estNavigant)
+				.count();
 	}
 }

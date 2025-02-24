@@ -6,7 +6,10 @@ import fr.altaprofits.exercice.model.animal.etat.EtatAnimal;
 import fr.altaprofits.exercice.model.animal.etat.HorsFerme;
 import fr.altaprofits.exercice.model.batiment.Ferme;
 import fr.altaprofits.exercice.model.batiment.SectionFerme;
+import fr.altaprofits.exercice.model.strategie.Navigant;
+import fr.altaprofits.exercice.model.strategie.Roulant;
 import fr.altaprofits.exercice.model.strategie.StrategieDeplacement;
+import fr.altaprofits.exercice.model.strategie.Volant;
 
 public abstract class Animal implements Element {
 
@@ -24,11 +27,6 @@ public abstract class Animal implements Element {
 
     protected Point position;
     protected final String descriptif;
-
-    @Override
-    public StrategieDeplacement getDeplacement() {
-        return deplacement;
-    }
 
     @Override
     public SectionFerme getSection() {
@@ -88,5 +86,20 @@ public abstract class Animal implements Element {
         }
 
         position = deplacement.seDeplace(descriptif, position, new Point(x, y));
-    };
+    }
+
+    @Override
+    public boolean estVolant() {
+        return deplacement instanceof Volant;
+    }
+
+    @Override
+    public boolean estRoulant() {
+        return deplacement instanceof Roulant;
+    }
+
+    @Override
+    public boolean estNavigant() {
+        return deplacement instanceof Navigant;
+    }
 }
