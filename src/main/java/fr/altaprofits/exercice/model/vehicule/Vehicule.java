@@ -11,7 +11,7 @@ public abstract class Vehicule {
     protected final StrategieDeplacement deplacement;
 
     // Permet de spécifier la section dans laquelle stationner le véhicule
-    protected final Section section;
+    protected Section section;
 
     // Permet de gérer la sortie-entrée dans le hangar ainsi que d'autoriser les déplacements
     protected EtatVehicule etat;

@@ -3,10 +3,6 @@ package fr.altaprofits.exercice.model;
 import fr.altaprofits.exercice.commun.Point;
 import fr.altaprofits.exercice.model.vehicule.*;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.PrintStream;
 import java.util.*;
 
 import static fr.altaprofits.exercice.model.Section.*;
