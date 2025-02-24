@@ -183,7 +183,8 @@ class FermeTest {
         vache3.entre(ferme);
         new Vache().entre(ferme);
 
-        assertThat(ferme.nombreElementsVolants()).isEqualTo(2);
+        // Canard est volant et navigant.
+        assertThat(ferme.nombreElementsVolants()).isEqualTo(5);
         assertThat(ferme.nombreElementsRoulants()).isEqualTo(4);
         assertThat(ferme.nombreElementsNavigants()).isEqualTo(3);
     }

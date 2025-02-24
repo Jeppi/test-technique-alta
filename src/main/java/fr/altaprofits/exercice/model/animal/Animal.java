@@ -11,10 +11,31 @@ import fr.altaprofits.exercice.model.strategie.Roulant;
 import fr.altaprofits.exercice.model.strategie.StrategieDeplacement;
 import fr.altaprofits.exercice.model.strategie.Volant;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class Animal implements Element {
 
     // Permet de spécifier le mode de déplacement
-    protected final StrategieDeplacement deplacement;
+    protected StrategieDeplacement deplacementActif;
+
+    // Un animal peut avoir plusieurs stratégies de déplacement
+    // Contient en première position la stratégie par défaut via le constructeur.
+    protected final List<StrategieDeplacement> deplacements = new ArrayList<>();
+
+    // La sous classe peut ensuite ajouter des stratégies supplémentaires
+    protected void ajouteStrategieDeplacement(StrategieDeplacement strategieDeplacement) {
+        deplacements.add(strategieDeplacement);
+    }
+
+    // Elles pourront alors être activées
+    public void setDeplacementActif(StrategieDeplacement strategieDeplacement) {
+        if (!deplacements.contains(strategieDeplacement)) {
+            System.out.println("Cette stratégie de déplacement ne peut être appliquée à cet animal.");
+            return;
+        }
+        this.deplacementActif = strategieDeplacement;
+    }
 
     // Permet de spécifier la section dans laquelle rentre l'animal
     protected SectionFerme section;
@@ -61,7 +82,8 @@ public abstract class Animal implements Element {
                      SectionFerme sectionFerme) {
         position = new Point(0, 0);
         this.reference = reference;
-        deplacement = strategieDeplacement;
+        deplacementActif = strategieDeplacement;
+        deplacements.add(deplacementActif);
         section = sectionFerme;
         etat = new HorsFerme();
         descriptif = String.format("Animal d'espèce %s (Ref : %s)",
@@ -85,21 +107,24 @@ public abstract class Animal implements Element {
             return;
         }
 
-        position = deplacement.seDeplace(descriptif, position, new Point(x, y));
+        position = deplacementActif.seDeplace(descriptif, position, new Point(x, y));
     }
 
     @Override
     public boolean estVolant() {
-        return deplacement instanceof Volant;
+        return deplacements.stream()
+                .anyMatch(deplacement -> deplacement instanceof Volant);
     }
 
     @Override
     public boolean estRoulant() {
-        return deplacement instanceof Roulant;
+        return deplacements.stream()
+                .anyMatch(deplacement -> deplacement instanceof Roulant);
     }
 
     @Override
     public boolean estNavigant() {
-        return deplacement instanceof Navigant;
+        return deplacements.stream()
+                .anyMatch(deplacement -> deplacement instanceof Navigant);
     }
 }
