@@ -18,8 +18,6 @@ public class HorsHangar implements EtatVehicule {
             return;
         }
         vehicule.setEtat(new DansHangar());
-        vehicule.getEtat().estStationne();
-        System.out.println(vehicule.getEtat().estStationne());
         hangar.ajoute(vehicule);
         System.out.println(vehicule.getDescriptif() + " entre dans le hangar.");
     }
