@@ -3,6 +3,8 @@ package fr.altaprofits.exercice.model.vehicule;
 import fr.altaprofits.exercice.commun.Point;
 import fr.altaprofits.exercice.model.Hangar;
 import fr.altaprofits.exercice.model.Section;
+import fr.altaprofits.exercice.model.vehicule.etat.EtatVehicule;
+import fr.altaprofits.exercice.model.vehicule.etat.HorsHangar;
 import fr.altaprofits.exercice.model.vehicule.strategie.StrategieDeplacement;
 
 public abstract class Vehicule {
@@ -25,6 +27,10 @@ public abstract class Vehicule {
 
     public Section getSection() {
         return section;
+    }
+
+    public EtatVehicule getEtat() {
+        return etat;
     }
 
     public void setEtat(EtatVehicule etat) {
@@ -66,6 +72,7 @@ public abstract class Vehicule {
         etat.sortDuHangar(this, hangar);
     }
 
+    //  Choix simplifié, il faudrait traiter l'aspect transactionnel.
     public void seDeplace(int x, int y) {
         if (etat.estStationne()) {
             System.out.printf("Le %s est stationné, il doit être sorti du hangar pour pouvoir se déplacer.\n",

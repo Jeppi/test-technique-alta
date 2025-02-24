@@ -1,6 +1,7 @@
-package fr.altaprofits.exercice.model.vehicule;
+package fr.altaprofits.exercice.model.vehicule.etat;
 
 import fr.altaprofits.exercice.model.Hangar;
+import fr.altaprofits.exercice.model.vehicule.Vehicule;
 
 public class DansHangar implements EtatVehicule {
 
@@ -11,7 +12,7 @@ public class DansHangar implements EtatVehicule {
 
     @Override
     public void entreDansHangar(Vehicule vehicule, Hangar hangar) {
-        System.out.printf("Le %s est déjà dans le hangar, il ne peut y entrer à nouveau.\n", vehicule.descriptif);
+        System.out.printf("Le %s est déjà dans le hangar, il ne peut y entrer à nouveau.\n", vehicule.getDescriptif());
     }
 
     @Override

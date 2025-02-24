@@ -1,6 +1,7 @@
-package fr.altaprofits.exercice.model.vehicule;
+package fr.altaprofits.exercice.model.vehicule.etat;
 
 import fr.altaprofits.exercice.model.Hangar;
+import fr.altaprofits.exercice.model.vehicule.Vehicule;
 
 public class HorsHangar implements EtatVehicule {
 
@@ -17,6 +18,8 @@ public class HorsHangar implements EtatVehicule {
             return;
         }
         vehicule.setEtat(new DansHangar());
+        vehicule.getEtat().estStationne();
+        System.out.println(vehicule.getEtat().estStationne());
         hangar.ajoute(vehicule);
         System.out.println(vehicule.getDescriptif() + " entre dans le hangar.");
     }

@@ -234,7 +234,7 @@ class HangarTest {
 
     }
 
-    //@Test
+    @Test
     void ajouteDesVehiculesSansPasserParEntreDansHangarKO() {
 
         hangar.ajoute(moto1);
