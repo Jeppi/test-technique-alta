@@ -1,6 +1,6 @@
-package fr.altaprofits.exercice.model;
+package fr.altaprofits.exercice.model.batiment;
 
-import fr.altaprofits.exercice.model.vehicule.Element;
+import fr.altaprofits.exercice.model.Element;
 
 import java.util.Map;
 import java.util.Set;

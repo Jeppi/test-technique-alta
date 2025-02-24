@@ -1,7 +1,6 @@
 package fr.altaprofits.exercice.model.vehicule.etat;
 
-import fr.altaprofits.exercice.model.Hangar;
-import fr.altaprofits.exercice.model.SectionHangar;
+import fr.altaprofits.exercice.model.batiment.Hangar;
 import fr.altaprofits.exercice.model.vehicule.Vehicule;
 
 public class DansHangar implements EtatVehicule {

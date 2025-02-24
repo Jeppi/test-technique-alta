@@ -1,4 +1,4 @@
-package fr.altaprofits.exercice.model;
+package fr.altaprofits.exercice.model.batiment;
 
 import fr.altaprofits.exercice.model.vehicule.Vehicule;
 

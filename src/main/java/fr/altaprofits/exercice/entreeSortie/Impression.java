@@ -1,6 +1,6 @@
 package fr.altaprofits.exercice.entreeSortie;
 
-import fr.altaprofits.exercice.model.SectionHangar;
+import fr.altaprofits.exercice.model.batiment.SectionHangar;
 import fr.altaprofits.exercice.model.vehicule.Vehicule;
 
 import java.io.File;

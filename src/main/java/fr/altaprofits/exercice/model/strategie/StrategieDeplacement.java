@@ -1,4 +1,4 @@
-package fr.altaprofits.exercice.model.vehicule.strategie;
+package fr.altaprofits.exercice.model.strategie;
 
 import fr.altaprofits.exercice.commun.Point;
 

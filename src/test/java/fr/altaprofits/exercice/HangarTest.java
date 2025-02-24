@@ -1,15 +1,15 @@
 package fr.altaprofits.exercice;
 
 import fr.altaprofits.exercice.commun.Point;
-import fr.altaprofits.exercice.model.Hangar;
-import fr.altaprofits.exercice.model.SectionHangar;
+import fr.altaprofits.exercice.model.batiment.Hangar;
+import fr.altaprofits.exercice.model.batiment.SectionHangar;
 import fr.altaprofits.exercice.model.vehicule.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static fr.altaprofits.exercice.model.SectionHangar.*;
+import static fr.altaprofits.exercice.model.batiment.SectionHangar.*;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 class HangarTest {

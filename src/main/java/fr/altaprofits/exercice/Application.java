@@ -1,6 +1,6 @@
 package fr.altaprofits.exercice;
 
-import fr.altaprofits.exercice.model.Hangar;
+import fr.altaprofits.exercice.model.batiment.Hangar;
 import fr.altaprofits.exercice.model.vehicule.*;
 
 import java.io.File;

@@ -1,12 +1,12 @@
 package fr.altaprofits.exercice.model.vehicule;
 
-import fr.altaprofits.exercice.model.SectionHangar;
-import fr.altaprofits.exercice.model.vehicule.strategie.Volant;
+import fr.altaprofits.exercice.model.batiment.SectionHangar;
+import fr.altaprofits.exercice.model.strategie.Volant;
 
 import java.util.Set;
 
-import static fr.altaprofits.exercice.model.SectionHangar.AEROPORT;
-import static fr.altaprofits.exercice.model.SectionHangar.PORT;
+import static fr.altaprofits.exercice.model.batiment.SectionHangar.AEROPORT;
+import static fr.altaprofits.exercice.model.batiment.SectionHangar.PORT;
 
 public class Hydravion extends Vehicule{
     private static Integer idIndex = 0;

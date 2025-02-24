@@ -1,11 +1,12 @@
 package fr.altaprofits.exercice.model.vehicule;
 
 import fr.altaprofits.exercice.commun.Point;
-import fr.altaprofits.exercice.model.Hangar;
-import fr.altaprofits.exercice.model.SectionHangar;
+import fr.altaprofits.exercice.model.Element;
+import fr.altaprofits.exercice.model.batiment.Hangar;
+import fr.altaprofits.exercice.model.batiment.SectionHangar;
 import fr.altaprofits.exercice.model.vehicule.etat.EtatVehicule;
 import fr.altaprofits.exercice.model.vehicule.etat.HorsHangar;
-import fr.altaprofits.exercice.model.vehicule.strategie.StrategieDeplacement;
+import fr.altaprofits.exercice.model.strategie.StrategieDeplacement;
 
 public abstract class Vehicule implements Element {
 
@@ -24,38 +25,36 @@ public abstract class Vehicule implements Element {
     protected Point position;
     protected final String descriptif;
 
+    @Override
+    public StrategieDeplacement getDeplacement() {
+        return deplacement;
+    }
 
     @Override
     public SectionHangar getSection() {
         return section;
     }
 
-    @Override
     public EtatVehicule getEtat() {
         return etat;
     }
 
-    @Override
     public void setEtat(EtatVehicule etat) {
         this.etat = etat;
     }
 
-    @Override
     public String getReference() {
         return reference;
     }
 
-    @Override
     public Point getPosition() {
         return position;
     }
 
-    @Override
     public String getDescriptif() {
         return descriptif;
     }
 
-    @Override
     public void setPosition(Point position) {
         this.position = position;
     }
@@ -71,12 +70,10 @@ public abstract class Vehicule implements Element {
                 getClass().getSimpleName(), reference);
     }
 
-    @Override
     public void entreDansHangar(Hangar hangar) {
         etat.entreDansHangar(this, hangar);
     }
 
-    @Override
     public void sortDuHangar(Hangar hangar) {
         etat.sortDuHangar(this, hangar);
     }

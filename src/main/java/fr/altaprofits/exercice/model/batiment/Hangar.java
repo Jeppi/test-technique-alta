@@ -1,11 +1,11 @@
-package fr.altaprofits.exercice.model;
+package fr.altaprofits.exercice.model.batiment;
 
 import fr.altaprofits.exercice.commun.Point;
 import fr.altaprofits.exercice.model.vehicule.*;
 
 import java.util.*;
 
-import static fr.altaprofits.exercice.model.SectionHangar.*;
+import static fr.altaprofits.exercice.model.batiment.SectionHangar.*;
 
 public class Hangar implements Batiment<Vehicule, SectionHangar> {
 
