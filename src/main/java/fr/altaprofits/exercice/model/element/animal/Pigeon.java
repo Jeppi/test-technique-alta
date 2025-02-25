@@ -1,6 +1,6 @@
-package fr.altaprofits.exercice.model.animal;
+package fr.altaprofits.exercice.model.element.animal;
 
-import fr.altaprofits.exercice.model.strategie.Volant;
+import fr.altaprofits.exercice.model.element.strategie.Volant;
 
 import static fr.altaprofits.exercice.model.batiment.SectionFerme.PIGEONNIER;
 

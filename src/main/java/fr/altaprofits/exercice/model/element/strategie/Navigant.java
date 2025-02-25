@@ -1,13 +1,13 @@
-package fr.altaprofits.exercice.model.strategie;
+package fr.altaprofits.exercice.model.element.strategie;
 
 import fr.altaprofits.exercice.commun.Point;
 
-public class Volant implements StrategieDeplacement {
+public class Navigant implements StrategieDeplacement {
 
     @Override
     public Point seDeplace(String descriptifEntite, Point depart, Point destination) {
 
-        System.out.printf(descriptifEntite + ", vole de la position %s vers %s\n",
+        System.out.printf(descriptifEntite + ", navigue de la position %s vers %s\n",
                 depart, destination);
 
         return destination;

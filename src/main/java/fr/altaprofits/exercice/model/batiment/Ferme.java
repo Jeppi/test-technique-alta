@@ -1,85 +1,17 @@
 package fr.altaprofits.exercice.model.batiment;
 
-import fr.altaprofits.exercice.commun.Point;
-import fr.altaprofits.exercice.model.animal.Animal;
-import fr.altaprofits.exercice.model.strategie.Volant;
+import fr.altaprofits.exercice.model.element.animal.Animal;
 
 import java.util.*;
 
-public class Ferme implements Batiment<Animal, SectionFerme> {
-
-	public final Point POSITION_FERME = new Point(0, 0);
-
-	// Représente les différentes sections
-	Map<SectionFerme, Set<Animal>> sections = new HashMap<>();
-
-	@Override
-	public Map<SectionFerme, Set<Animal>> getSections() {
-		return sections;
-	}
+public class Ferme extends Batiment<Animal> {
 
 	public Ferme() {
+		super();
 		// Initialisation des différentes sections
 		for (SectionFerme section : SectionFerme.values()) {
 			sections.put(section, new HashSet<>());
 		}
 	}
 
-	@Override
-	public void ajoute(Animal animal) {
-		if (!animal.getEtat().estEntre()) {
-			System.out.printf("Pour ajouter le %s à la ferme, il faut faire appel à la méthode entreDansFerme().\n",
-					animal.getDescriptif());
-			return;
-		}
-		sections.get(animal.getSection()).add(animal);
-	}
-
-	// Doit être appelé par véhicule qui s'occupe de changer l'état de Véhicule
-	@Override
-	public void retire(Animal animal) {
-		if (animal.getEtat().estEntre()) {
-			System.out.printf("Pour retirer le %s de la ferme, il faut faire appel à la méthode sortDeLaFerme().\n",
-					animal.getDescriptif());
-			return;
-		}
-		sections.get(animal.getSection()).remove(animal);
-	}
-
-	@Override
-	public int nombreElements(SectionFerme sectionFerme) {
-		return sections.get(sectionFerme).size();
-	}
-
-	@Override
-	public int nombreElementsDansBatiment() {
-		return sections.values().stream()
-				.map(Set::size)
-				.reduce(Integer::sum)
-				.orElse(0);
-	}
-
-	@Override
-	public int nombreElementsVolants() {
-		return (int) sections.values().stream()
-				.flatMap(Collection::stream)
-				.filter(Animal::estVolant)
-				.count();
-	}
-
-	@Override
-	public int nombreElementsRoulants() {
-		return (int) sections.values().stream()
-				.flatMap(Collection::stream)
-				.filter(Animal::estRoulant)
-				.count();
-	}
-
-	@Override
-	public int nombreElementsNavigants() {
-		return (int) sections.values().stream()
-				.flatMap(Collection::stream)
-				.filter(Animal::estNavigant)
-				.count();
-	}
 }

@@ -1,7 +1,7 @@
-package fr.altaprofits.exercice.model.vehicule;
+package fr.altaprofits.exercice.model.element.vehicule;
 
 import fr.altaprofits.exercice.model.batiment.SectionHangar;
-import fr.altaprofits.exercice.model.strategie.Volant;
+import fr.altaprofits.exercice.model.element.strategie.Volant;
 
 import java.util.Set;
 
@@ -22,11 +22,11 @@ public class Hydravion extends Vehicule{
     // Inutile de généralisé cela aux autres Véhicules pour l'instant.
     public Hydravion setSection(SectionHangar section) {
         if (!SECTIONSAUTORISEES.contains(section)) {
-            System.out.printf("Un hydravion ne peut stationner dans le %s, que dans le port ou l'aéroport",
+            System.out.printf("Un hydravion ne peut stationner dans le %s, que dans le port ou l'aéroport\n",
                     section);
             return this;
         }
-        if (etat.estStationne()) {
+        if (etat.estDansBatiment()) {
             System.out.println("On ne peut déplacer de section un hydravion une fois stationné," +
                     " il doit ressortir et rentrer à nouveau dans la nouvelle section.");
             return this;

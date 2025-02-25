@@ -1,6 +1,6 @@
-package fr.altaprofits.exercice.model.vehicule;
+package fr.altaprofits.exercice.model.element.vehicule;
 
-import fr.altaprofits.exercice.model.strategie.Roulant;
+import fr.altaprofits.exercice.model.element.strategie.Roulant;
 
 import static fr.altaprofits.exercice.model.batiment.SectionHangar.GARAGE;
 

@@ -1,10 +1,10 @@
 package fr.altaprofits.exercice;
 
 import fr.altaprofits.exercice.commun.Point;
-import fr.altaprofits.exercice.model.animal.Animal;
-import fr.altaprofits.exercice.model.animal.Canard;
-import fr.altaprofits.exercice.model.animal.Pigeon;
-import fr.altaprofits.exercice.model.animal.Vache;
+import fr.altaprofits.exercice.model.element.animal.Animal;
+import fr.altaprofits.exercice.model.element.animal.Canard;
+import fr.altaprofits.exercice.model.element.animal.Pigeon;
+import fr.altaprofits.exercice.model.element.animal.Vache;
 import fr.altaprofits.exercice.model.batiment.Ferme;
 import fr.altaprofits.exercice.model.batiment.SectionFerme;
 import org.junit.jupiter.api.Test;
@@ -153,11 +153,11 @@ class FermeTest {
         canard2.seDeplace(25, 55);
         pigeon1.seDeplace(23, 11);
 
-        assertThat(vache1.getPosition()).isEqualTo(ferme.POSITION_FERME);
-        assertThat(vache2.getPosition()).isEqualTo(ferme.POSITION_FERME);
-        assertThat(canard1.getPosition()).isEqualTo(ferme.POSITION_FERME);
-        assertThat(canard2.getPosition()).isEqualTo(ferme.POSITION_FERME);
-        assertThat(pigeon1.getPosition()).isEqualTo(ferme.POSITION_FERME);
+        assertThat(vache1.getPosition()).isEqualTo(ferme.POSITION);
+        assertThat(vache2.getPosition()).isEqualTo(ferme.POSITION);
+        assertThat(canard1.getPosition()).isEqualTo(ferme.POSITION);
+        assertThat(canard2.getPosition()).isEqualTo(ferme.POSITION);
+        assertThat(pigeon1.getPosition()).isEqualTo(ferme.POSITION);
 
     }
 

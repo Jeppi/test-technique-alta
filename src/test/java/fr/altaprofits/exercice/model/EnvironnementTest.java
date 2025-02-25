@@ -1,16 +1,15 @@
 package fr.altaprofits.exercice.model;
 
-import fr.altaprofits.exercice.model.animal.Canard;
-import fr.altaprofits.exercice.model.animal.Pigeon;
-import fr.altaprofits.exercice.model.animal.Vache;
+import fr.altaprofits.exercice.model.element.animal.Canard;
+import fr.altaprofits.exercice.model.element.animal.Pigeon;
+import fr.altaprofits.exercice.model.element.animal.Vache;
 import fr.altaprofits.exercice.model.batiment.Ferme;
 import fr.altaprofits.exercice.model.batiment.Hangar;
 import fr.altaprofits.exercice.model.batiment.SectionHangar;
-import fr.altaprofits.exercice.model.vehicule.*;
+import fr.altaprofits.exercice.model.element.vehicule.*;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class EnvironnementTest {
 
@@ -27,14 +26,14 @@ class EnvironnementTest {
 
     Hangar      hangar = new Hangar();
 
-    Moto        moto1 = new Moto();
-    Voiture     voiture1 = new Voiture();
+    Moto moto1 = new Moto();
+    Voiture voiture1 = new Voiture();
     Avion       avion1 = new Avion();
     Avion       avion2 = new Avion();
     Helicoptere helico1 = new Helicoptere();
-    JetSki      jetSki1 = new JetSki();
-    Bateau      bateau1 = new Bateau();
-    Hydravion   hydravion1 = new Hydravion();
+    JetSki jetSki1 = new JetSki();
+    Bateau bateau1 = new Bateau();
+    Hydravion hydravion1 = new Hydravion();
     Hydravion   hydravionAeroport = new Hydravion().setSection(SectionHangar.AEROPORT);
 
     Environnement environnement = new Environnement(ferme, hangar);
@@ -52,15 +51,15 @@ class EnvironnementTest {
         vache3.entre(ferme);
         new Vache().entre(ferme);
 
-        moto1.entreDansHangar(hangar);
-        voiture1.entreDansHangar(hangar);
-        avion1.entreDansHangar(hangar);
-        avion2.entreDansHangar(hangar);
-        helico1.entreDansHangar(hangar);
-        jetSki1.entreDansHangar(hangar);
-        bateau1.entreDansHangar(hangar);
-        hydravion1.entreDansHangar(hangar);
-        hydravionAeroport.entreDansHangar(hangar);
+        moto1.entre(hangar);
+        voiture1.entre(hangar);
+        avion1.entre(hangar);
+        avion2.entre(hangar);
+        helico1.entre(hangar);
+        jetSki1.entre(hangar);
+        bateau1.entre(hangar);
+        hydravion1.entre(hangar);
+        hydravionAeroport.entre(hangar);
 
         // Les canards sont volants et navigants.
         assertThat(environnement.nombreElementsVolants()).isEqualTo(10);
