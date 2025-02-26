@@ -1,6 +1,6 @@
 package fr.altaprofits.exercice.model.batiment;
 
-import fr.altaprofits.exercice.model.element.Element;
+import fr.altaprofits.exercice.model.element.ElementI;
 
-public interface Section<T extends Element<T>> {
+public interface Section<T extends ElementI<T>> {
 }

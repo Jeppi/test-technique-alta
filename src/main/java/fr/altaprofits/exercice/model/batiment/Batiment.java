@@ -1,11 +1,14 @@
 package fr.altaprofits.exercice.model.batiment;
 
 import fr.altaprofits.exercice.commun.Point;
-import fr.altaprofits.exercice.model.element.Element;
+import fr.altaprofits.exercice.model.element.ElementI;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
-public class Batiment<T extends Element<T>> {
+public class Batiment<T extends ElementI<T>> {
 
     public final Point POSITION = new Point(0, 0);
 
@@ -20,7 +23,7 @@ public class Batiment<T extends Element<T>> {
     // Je passe par l'état de l'élément pour gérer cela (solution à améliorer - Ticket).
     public void ajoute(T element) {
         // Si le véhicule n'est pas entré dans le hangar, on ne peut l'ajouter
-        if (!element.getEtat().estDansBatiment()) {
+        if (!element.estDansBatiment()) {
             System.out.printf("Pour ajouter le %s au hangar, il faut faire appel à la méthode entreDansHangar().\n",
                     element.getDescriptif());
             return;
@@ -31,7 +34,7 @@ public class Batiment<T extends Element<T>> {
     // Doit être appelé par véhicule qui s'occupe de changer l'état de Véhicule
     public void retire(T element) {
         // Si le véhicule n'est pas sorti du hangar, on ne peut le retirer
-        if (element.getEtat().estDansBatiment()) {
+        if (element.estDansBatiment()) {
             System.out.printf("Pour retirer le %s du bâtiment, il faut faire appel à la méthode sortDuBatiment().\n",
                     element.getDescriptif());
             return;
