@@ -13,6 +13,12 @@ import fr.altaprofits.exercice.model.element.strategie.Volant;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * Permet de mutualiser le code entre les éléments (code propre à la notion d'élément)
+ * L'usage de l'interface ElementI permet de spécifier ce code dans les sous classes si nécessaire
+ * On n'est pas dépendant des choix qui sont fait ici.
+**/
 public abstract class Element<T extends Element<T>> implements ElementI<T> {
 
     // Section que l'élément va rejoindre dans le bâtiment.
