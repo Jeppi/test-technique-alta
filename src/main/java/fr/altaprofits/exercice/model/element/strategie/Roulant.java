@@ -2,7 +2,8 @@ package fr.altaprofits.exercice.model.element.strategie;
 
 import fr.altaprofits.exercice.commun.Point;
 
-public class Roulant implements StrategieDeplacement {
+public enum Roulant implements StrategieDeplacement {
+    INSTANCE;
 
     @Override
     public Point seDeplace(String descriptifEntite, Point depart, Point destination) {

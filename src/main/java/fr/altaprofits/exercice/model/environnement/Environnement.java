@@ -1,7 +1,4 @@
-package fr.altaprofits.exercice.model;
-
-import fr.altaprofits.exercice.model.batiment.Ferme;
-import fr.altaprofits.exercice.model.batiment.Hangar;
+package fr.altaprofits.exercice.model.environnement;
 
 public class Environnement {
     private final Ferme ferme;
@@ -12,15 +9,15 @@ public class Environnement {
         this.hangar = hangar;
     }
 
-    int nombreElementsVolants() {
+    public int nombreElementsVolants() {
         return ferme.nombreElementsVolants() + hangar.nombreElementsVolants();
     }
 
-    int nombreElementsRoulants() {
+    public int nombreElementsRoulants() {
         return ferme.nombreElementsRoulants() + hangar.nombreElementsRoulants();
     }
 
-    int nombreElementsNavigants() {
+    public int nombreElementsNavigants() {
         return ferme.nombreElementsNavigants() + hangar.nombreElementsNavigants();
     }
 }

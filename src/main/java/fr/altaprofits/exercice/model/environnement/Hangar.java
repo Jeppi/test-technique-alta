@@ -1,6 +1,6 @@
-package fr.altaprofits.exercice.model.batiment;
+package fr.altaprofits.exercice.model.environnement;
 
-import fr.altaprofits.exercice.model.element.vehicule.Vehicule;
+import fr.altaprofits.exercice.model.element.Vehicule;
 
 import java.util.*;
 

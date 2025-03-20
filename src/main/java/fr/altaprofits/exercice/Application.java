@@ -1,39 +1,39 @@
 package fr.altaprofits.exercice;
 
-import fr.altaprofits.exercice.model.batiment.Hangar;
-import fr.altaprofits.exercice.model.element.vehicule.*;
+import fr.altaprofits.exercice.model.environnement.Hangar;
+import fr.altaprofits.exercice.model.element.Vehicule;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 
-import static fr.altaprofits.exercice.entreeSortie.Impression.imprimerTousLesVehiculesDuHangarDansConsole;
-import static fr.altaprofits.exercice.entreeSortie.Impression.imprimerTousLesVehiculesDuHangarDansFichier;
-import static fr.altaprofits.exercice.model.batiment.SectionHangar.*;
+import static fr.altaprofits.exercice.entreeSortie.Impression.*;
+import static fr.altaprofits.exercice.model.environnement.SectionHangar.*;
+import static fr.altaprofits.exercice.model.element.TypeVehicule.*;
 
 public class Application {
     public static void main(String[] args) {
         Hangar hangar = new Hangar();
 
-        Moto moto1 = new Moto();
-        Voiture voiture1 = new Voiture();
-        Avion avion1 = new Avion();
-        Avion       avion2 = new Avion();
-        Helicoptere helico1 = new Helicoptere();
-        JetSki jetSki1 = new JetSki();
-        Bateau bateau1 = new Bateau();
+        Vehicule moto1 = new Vehicule(MOTO);
+        Vehicule voiture1 = new Vehicule(VOITURE);
+        Vehicule avion1 = new Vehicule(AVION);
+        Vehicule avion2 = new Vehicule(AVION);
+        Vehicule helico1 = new Vehicule(HELICOPTERE);
+        Vehicule jetSki1 = new Vehicule(JETSKI);
+        Vehicule bateau1 = new Vehicule(BATEAU);
 
-        moto1.entre(hangar);
-        voiture1.entre(hangar);
-        avion1.entre(hangar);
-        avion2.entre(hangar);
-        helico1.entre(hangar);
-        jetSki1.entre(hangar);
-        bateau1.entre(hangar);
+        hangar.faitEntrer(moto1);
+        hangar.faitEntrer(voiture1);
+        hangar.faitEntrer(avion1);
+        hangar.faitEntrer(avion2);
+        hangar.faitEntrer(helico1);
+        hangar.faitEntrer(jetSki1);
+        hangar.faitEntrer(bateau1);
 
-        imprimerTousLesVehiculesDuHangarDansConsole(hangar.getSections());
+        imprimerTousLesElementsDuBatimentDansConsole(hangar.getSections());
 
         try {
-            imprimerTousLesVehiculesDuHangarDansFichier(new File("hangar.txt"), hangar.getSections());
+            imprimerTousLesElementsDuBatimentDansFichier(new File("hangar.txt"), hangar.getSections());
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -43,13 +43,13 @@ public class Application {
         System.out.println("Nombre de véhicules dans le garage : " + hangar.nombreElements(GARAGE));
         System.out.println("Nombre de véhicules dans le port : " + hangar.nombreElements(PORT));
 
-        moto1.sort(hangar);
-        voiture1.sort(hangar);
-        avion1.sort(hangar);
-        avion2.sort(hangar);
-        helico1.sort(hangar);
-        jetSki1.sort(hangar);
-        bateau1.sort(hangar);
+        hangar.faitEntrer(moto1);
+        hangar.faitEntrer(voiture1);
+        hangar.faitEntrer(avion1);
+        hangar.faitEntrer(avion2);
+        hangar.faitEntrer(helico1);
+        hangar.faitEntrer(jetSki1);
+        hangar.faitEntrer(bateau1);
 
         System.out.println("Nombre de véhicules dans le hangar : " + hangar.nombreElementsDansBatiment());
         System.out.println("Nombre de véhicules dans l'aéroport : " + hangar.nombreElements(AEROPORT));

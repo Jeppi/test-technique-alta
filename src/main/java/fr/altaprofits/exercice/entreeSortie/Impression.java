@@ -1,36 +1,37 @@
 package fr.altaprofits.exercice.entreeSortie;
 
-import fr.altaprofits.exercice.model.batiment.Section;
 import fr.altaprofits.exercice.model.element.Element;
-import fr.altaprofits.exercice.model.element.vehicule.Vehicule;
+import fr.altaprofits.exercice.model.environnement.Section;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
+import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 
 public class Impression {
-    private static void imprimerDansConsole(Element<?> element) {
-        System.out.println(element.getDescriptif());
-    }
 
-    private static void imprimerSectionDansFichier(Set<? extends Element<?>> elements, PrintStream printStream)  {
-        for (Element<?> element : elements) {
+    private static <T extends Element> void imprimerElements(Collection<T> elements, PrintStream printStream) {
+        for (T element : elements) {
             printStream.println(element.getDescriptif());
         }
     }
 
-    public static void imprimerTousLesVehiculesDuHangarDansConsole(Map<Section<Vehicule>, Set<Vehicule>> sections) {
-        for (Set<? extends Element<?>> vehicules : sections.values()) {
-            vehicules.forEach(Impression::imprimerDansConsole);
-        }
+    private static <T extends Element> void imprimerTousLesElementsDuBatiment(Map<Section<T>, Set<T>> sections, PrintStream printStream) {
+        sections.values()
+                .forEach(elements -> imprimerElements(elements, printStream));
     }
 
-    public static void imprimerTousLesVehiculesDuHangarDansFichier(File f, Map<Section<Vehicule>, Set<Vehicule>> sections) throws FileNotFoundException {
-        PrintStream printStream = new PrintStream(new FileOutputStream(f));
-        sections.values()
-                .forEach(vehicules -> imprimerSectionDansFichier(vehicules, printStream));
+    public static <T extends Element> void imprimerTousLesElementsDuBatimentDansConsole(Map<Section<T>, Set<T>> sections) {
+        imprimerTousLesElementsDuBatiment(sections, System.out);
+    }
+
+    public static <T extends Element> void imprimerTousLesElementsDuBatimentDansFichier(File f, Map<Section<T>, Set<T>> sections) throws FileNotFoundException {
+        // try-with-ressource qui va fermer le PrintStream
+        try (PrintStream printStream = new PrintStream(new FileOutputStream(f))) {
+            imprimerTousLesElementsDuBatiment(sections, printStream);
+        }
     }
 }

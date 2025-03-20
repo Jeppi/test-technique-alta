@@ -1,14 +1,14 @@
-package fr.altaprofits.exercice.model.batiment;
+package fr.altaprofits.exercice.model.environnement;
 
 import fr.altaprofits.exercice.commun.Point;
-import fr.altaprofits.exercice.model.element.ElementI;
+import fr.altaprofits.exercice.model.element.Element;
 
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-public class Batiment<T extends ElementI<T>> {
+public class Batiment<T extends Element> {
 
     public final Point POSITION = new Point(0, 0);
 
@@ -19,27 +19,29 @@ public class Batiment<T extends ElementI<T>> {
         return sections;
     }
 
-    // Doit être appelé par élément qui s'occupe de changer son propre état.
-    // Je passe par l'état de l'élément pour gérer cela (solution à améliorer - Ticket).
-    public void ajoute(T element) {
-        // Si le véhicule n'est pas entré dans le hangar, on ne peut l'ajouter
-        if (!element.estDansBatiment()) {
-            System.out.printf("Pour ajouter le %s au hangar, il faut faire appel à la méthode entreDansHangar().\n",
+    public void faitEntrer(T element) {
+        if (element.getEstDansBatiment()) {
+            System.out.printf("Le %s est déjà dans le batîment\n", element.getDescriptif());
+            return;
+        }
+        if (!POSITION.equals(element.getPosition())) {
+            System.out.printf("Le %s doit se déplacer pour rejoindre le bâtiment pour pouvoir y entrer.\n",
                     element.getDescriptif());
             return;
         }
-        sections.get(element.getSection()).add(element);
+        // On ajoute l'élément à sa section et on met à jour estDansBatiment :
+        element.setEstDansBatiment(true);
+        sections.get(element.getSectionActive()).add(element);
     }
 
-    // Doit être appelé par véhicule qui s'occupe de changer l'état de Véhicule
-    public void retire(T element) {
-        // Si le véhicule n'est pas sorti du hangar, on ne peut le retirer
-        if (element.estDansBatiment()) {
-            System.out.printf("Pour retirer le %s du bâtiment, il faut faire appel à la méthode sortDuBatiment().\n",
-                    element.getDescriptif());
+    public void faitSortir(T element) {
+        if (!element.getEstDansBatiment()) {
+            System.out.printf("Le %s n'est pas dans le batîment\n", element.getDescriptif());
             return;
         }
-        sections.get(element.getSection()).remove(element);
+        // On sort l'élément de sa section et on met à jour estDansBatiment :
+        sections.get(element.getSectionActive()).remove(element);
+        element.setEstDansBatiment(false);
     }
 
     public int nombreElements(Section<T> section) {

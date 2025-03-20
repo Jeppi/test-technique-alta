@@ -1,58 +1,51 @@
 package fr.altaprofits.exercice;
 
 import fr.altaprofits.exercice.commun.Point;
-import fr.altaprofits.exercice.model.element.animal.Animal;
-import fr.altaprofits.exercice.model.element.animal.Canard;
-import fr.altaprofits.exercice.model.element.animal.Pigeon;
-import fr.altaprofits.exercice.model.element.animal.Vache;
-import fr.altaprofits.exercice.model.batiment.Ferme;
-import fr.altaprofits.exercice.model.batiment.SectionFerme;
+import fr.altaprofits.exercice.model.environnement.Ferme;
+import fr.altaprofits.exercice.model.environnement.SectionFerme;
+import fr.altaprofits.exercice.model.element.Animal;
 import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import static fr.altaprofits.exercice.model.element.TypeAnimal.*;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 class FermeTest {
 
     Ferme ferme = new Ferme();
 
-    Vache vache1 = new Vache();
-    Pigeon pigeon1 = new Pigeon();
-    Canard canard1 = new Canard();
-
-    Vache vache2 = new Vache();
-    Pigeon pigeon2 = new Pigeon();
-    Canard canard2 = new Canard();
-
-    Vache vache3 = new Vache();
-    Pigeon pigeon3 = new Pigeon();
-    Canard canard3 = new Canard();
-
-
-
+    Animal vache1 = new Animal(VACHE);
+    Animal pigeon1 = new Animal(PIGEON);
+    Animal canard1 = new Animal(CANARD);
+    Animal vache2 = new Animal(VACHE);
+    Animal pigeon2 = new Animal(PIGEON);
+    Animal canard2 = new Animal(CANARD);
+    Animal vache3 = new Animal(VACHE);
+    Animal pigeon3 = new Animal(PIGEON);
+    Animal canard3 = new Animal(CANARD);
 
     @Test
     void entre() {
 
-        vache1.entre(ferme);
-        pigeon1.entre(ferme);
-        canard1.entre(ferme);
-        vache2.entre(ferme);
-        pigeon2.entre(ferme);
-        canard2.entre(ferme);
+        ferme.faitEntrer(vache1);
+        ferme.faitEntrer(pigeon1);
+        ferme.faitEntrer(canard1);
+        ferme.faitEntrer(vache2);
+        ferme.faitEntrer(pigeon2);
+        ferme.faitEntrer(canard2);
 
         assertThat(ferme.nombreElementsDansBatiment()).isEqualTo(6);
 
         // On refait entrer
-        pigeon1.entre(ferme);
-        vache2.entre(ferme);
+        ferme.faitEntrer(pigeon1);
+        ferme.faitEntrer(vache2);
 
         assertThat(ferme.nombreElementsDansBatiment()).isEqualTo(6);
 
         // On ajoute un nouveau
-        new Canard().entre(ferme);
+        ferme.faitEntrer(new Animal(CANARD));
 
         assertThat(ferme.nombreElementsDansBatiment()).isEqualTo(7);
 
@@ -69,12 +62,12 @@ class FermeTest {
         canard2.seDeplace(3, 9);
 
         // les animaux ne se trouvent plus à l'entrée de la ferme
-        vache1.entre(ferme);
-        pigeon1.entre(ferme);
-        canard1.entre(ferme);
-        vache2.entre(ferme);
-        pigeon2.entre(ferme);
-        canard2.entre(ferme);
+        ferme.faitEntrer(vache1);
+        ferme.faitEntrer(pigeon1);
+        ferme.faitEntrer(canard1);
+        ferme.faitEntrer(vache2);
+        ferme.faitEntrer(pigeon2);
+        ferme.faitEntrer(canard2);
 
         // Aucun ne peut entrer
         assertThat(ferme.nombreElementsDansBatiment()).isEqualTo(0);
@@ -84,15 +77,15 @@ class FermeTest {
     @Test
     void nombreAnimauxParSection() {
 
-        vache1.entre(ferme);
-        pigeon1.entre(ferme);
-        canard1.entre(ferme);
-        vache2.entre(ferme);
-        pigeon2.entre(ferme);
-        canard2.entre(ferme);
-        canard3.entre(ferme);
-        vache3.entre(ferme);
-        new Vache().entre(ferme);
+        ferme.faitEntrer(vache1);
+        ferme.faitEntrer(pigeon1);
+        ferme.faitEntrer(canard1);
+        ferme.faitEntrer(vache2);
+        ferme.faitEntrer(pigeon2);
+        ferme.faitEntrer(canard2);
+        ferme.faitEntrer(canard3);
+        ferme.faitEntrer(vache3);
+        ferme.faitEntrer(new Animal(VACHE));
 
         assertThat(ferme.nombreElementsDansBatiment()).isEqualTo(9);
 
@@ -106,7 +99,7 @@ class FermeTest {
     void idUniquePourChaqueAnimal() {
 
         Set<Animal> animaux = Set.of(vache1, vache2, pigeon2, pigeon1, pigeon3, canard1,
-                canard2, canard3, new Vache());
+                canard2, canard3, new Animal(VACHE));
 
         Set<String> references = animaux.stream()
                 .map(Animal::getReference)
@@ -119,7 +112,7 @@ class FermeTest {
     }
 
     @Test
-    void vehiculesSeDeplacent() {
+    void elementsSeDeplacent() {
 
         vache1.seDeplace(5, 12);
         vache2.seDeplace(17, 13);
@@ -137,14 +130,14 @@ class FermeTest {
     }
 
     @Test
-    void vehiculesSeDeplacentKO() {
+    void elementsSeDeplacentKO() {
 
         // On fait entrer les animaux dans la ferme, ils ne peuvent plus se déplacer avant d'en sortir
-        vache1.entre(ferme);
-        vache2.entre(ferme);
-        canard1.entre(ferme);
-        canard2.entre(ferme);
-        pigeon1.entre(ferme);
+        ferme.faitEntrer(vache1);
+        ferme.faitEntrer(vache2);
+        ferme.faitEntrer(canard1);
+        ferme.faitEntrer(canard2);
+        ferme.faitEntrer(pigeon1);
 
         vache1.seDeplace(5, 12);
         vache2.seDeplace(17, 13);
@@ -161,27 +154,19 @@ class FermeTest {
 
     }
 
-    @Test
-    void ajouteDesVehiculesSansPasserParEntreKO() {
-
-        ferme.ajoute(vache1);
-
-        assertThat(ferme.nombreElementsDansBatiment()).isEqualTo(0);
-    }
-
     // Ajout fonctionnel de la méthode qui donne le nombre d'éléments par type de déplacement.
     @Test
     void nombreElementsParTypeDeDeplacement() {
 
-        vache1.entre(ferme);
-        pigeon1.entre(ferme);
-        canard1.entre(ferme);
-        vache2.entre(ferme);
-        pigeon2.entre(ferme);
-        canard2.entre(ferme);
-        canard3.entre(ferme);
-        vache3.entre(ferme);
-        new Vache().entre(ferme);
+        ferme.faitEntrer(vache1);
+        ferme.faitEntrer(pigeon1);
+        ferme.faitEntrer(canard1);
+        ferme.faitEntrer(vache2);
+        ferme.faitEntrer(pigeon2);
+        ferme.faitEntrer(canard2);
+        ferme.faitEntrer(canard3);
+        ferme.faitEntrer(vache3);
+        ferme.faitEntrer(new Animal(VACHE));
 
         // Canard est volant et navigant.
         assertThat(ferme.nombreElementsVolants()).isEqualTo(5);
